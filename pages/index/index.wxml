@@ -23,8 +23,48 @@
                 <cover-image class="collo-arrow" src="{{isSidebarTabActive[0] ? './images/jinyibu-xia.png' : './images/jinyibu.png'}}"></cover-image>
               </cover-view>
             </cover-view>
-            <cover-view class="collo-divider"></cover-view>
+            <cover-view class="collo-divider" wx:if="{{!isSidebarTabActive[0]}}"></cover-view>
+            <cover-view class="collo-tapcontent">
 
+              <cover-view class="collo-contentitem">
+                <cover-view class="con">
+                  <cover-view class="con-name">垃圾桶A</cover-view>
+                  <cover-view class="con-status">
+                    <cover-view class="con-persent">60%</cover-view>
+                    <cover-image class="con-status-img" src="./images/btn_qz.png"></cover-image>
+                  </cover-view>
+                </cover-view>
+                <cover-view class="item-divider"></cover-view>
+              </cover-view>
+              
+              <cover-view class="collo-contentitem">
+                <cover-view class="con">
+                  <cover-view class="con-name">垃圾桶A</cover-view>
+                  <cover-view class="con-status">
+                    <cover-view class="con-persent">60%</cover-view>
+                    <cover-image class="con-status-img" src="./images/btn_qz.png"></cover-image>
+                  </cover-view>
+                </cover-view>
+                <cover-view class="item-divider"></cover-view>
+              </cover-view>
+
+              <cover-view class="collo-contentitem">
+                <cover-view class="con">
+                  <cover-view class="con-name">垃圾桶A</cover-view>
+                  <cover-view class="con-status">
+                    <cover-view class="con-persent">60%</cover-view>
+                    <cover-image class="con-status-img" src="./images/btn_qz.png"></cover-image>
+                  </cover-view>
+                </cover-view>
+                <cover-view class="item-divider"></cover-view>
+              </cover-view>
+
+              
+
+              
+
+
+            </cover-view>
 
           </cover-view>
 
@@ -38,7 +78,7 @@
                 <cover-image class="collo-arrow" src="{{isSidebarTabActive[1] ? './images/jinyibu-xia.png' : './images/jinyibu.png'}}"></cover-image>
               </cover-view>
             </cover-view>
-            <cover-view class="collo-divider"></cover-view>
+            <cover-view class="collo-divider" wx:if="{{!isSidebarTabActive[1]}}"> </cover-view>
           
           
           </cover-view>

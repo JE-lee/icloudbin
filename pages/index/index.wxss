@@ -97,7 +97,45 @@
 .collo-arrow{
   width: 28rpx;
   height: 32rpx;
-  
 }
 
+/*内容区*/
+.collo-tapcontent{
+  box-sizing: border-box;
+  font-size: 30rpx;
+  padding-left: 130rpx;
+  padding-right: 56rpx;
+}
+
+.collo-contentitem .con{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+}
+.collo-contentitem .con-name{
+  flex: 1;
+  overflow: hidden;
+  margin-right: 10rpx;
+}
+.collo-contentitem .con-status{
+  display:flex;
+  align-items: center;
+}
+.collo-contentitem .con-persent{
+  color:#666;
+  margin-right:10rpx;
+}
+.collo-contentitem .con-status-img{
+  width: 50rpx;
+  height: 30rpx;
+}
+
+.collo-contentitem .item-divider{
+  content: '';
+  display: block;
+  height: 1rpx;
+  width: 100%;
+  background-color:#d6d6d6;
+}
 
