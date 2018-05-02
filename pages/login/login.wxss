@@ -1,0 +1,59 @@
+/* pages/login/login.wxss */
+.page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  text-align: center;
+  font-size: 34rpx;
+}
+.logo{
+  width: 476rpx;
+  height: 146rpx;
+  margin-top: 160rpx;
+}
+.invicode-label__wrapper{
+  position: relative;
+  width: 450rpx;
+  color: #58d7c7;
+  margin-top: 102rpx;
+}
+.invicode-label__wrapper::after{
+  content: '';
+  display: block;
+  width: 100%;
+  border-top: 1rpx solid  #58d7c7;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  
+ 
+}
+.invicode-label{
+  padding: 0 10rpx;
+  width: 208rpx;
+  position: relative;
+  z-index: 1;
+  background-color: #fff;
+  margin: 0 auto;
+}
+.invicode-input{
+  width: 490rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  border: 1rpx solid rgb(77,68, 105);
+  color:  #58d7c7;
+  border-radius: 12rpx;
+  margin-top: 24rpx;
+}
+
+.loginfix{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  line-height: 1.0;
+  padding: 30rpx 0;
+  background-color:#58d7c7;
+  color:#fff;
+}

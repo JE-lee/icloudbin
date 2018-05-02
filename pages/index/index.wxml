@@ -1,1 +1,52 @@
-<text>小程序快速启动模板</text>
+<view class="page" >
+  <view class="mapwrapper" >
+    <map class="map" >
+      <cover-view class="btn-con">
+        <cover-image class="img__member" src="./images/btn_cbl.png" bindtap="memberTap"></cover-image>
+        <cover-image class="img__saoma" src="./images/saoyisao.png" bindtap="saomaTap"></cover-image>
+      </cover-view>
+
+      <cover-view class="sidebar" animation="{{sidebarAnimationData}}">
+        <cover-view class="sidebar-mask" bindtap="hideSidebar"></cover-view>
+        <cover-view class="sidebar-content">
+          <cover-view class="head">
+            <cover-image class="head-img" src="./images/head.png"></cover-image>
+            <cover-view class="name">用户名称</cover-view>
+          </cover-view>
+          <!--垃圾桶列表-->
+          <cover-view class="bucktlist collo-tap" bindtap="sidebarTap" data-index="{{0}}">
+
+            <cover-view class="collo-tappoint">
+              <cover-image class="collo-icon" src="./images/ljt.png"></cover-image>
+              <cover-view class="collo-title">
+                <cover-view class="collo-text">垃圾桶列表</cover-view>
+                <cover-image class="collo-arrow" src="{{isSidebarTabActive[0] ? './images/jinyibu-xia.png' : './images/jinyibu.png'}}"></cover-image>
+              </cover-view>
+            </cover-view>
+            <cover-view class="collo-divider"></cover-view>
+
+
+          </cover-view>
+
+          <!--统计数据-->
+          <cover-view class="statistics collo-tap" bindtap="sidebarTap" data-index="{{1}}">
+
+            <cover-view class="collo-tappoint">
+              <cover-image class="collo-icon" src="./images/tjsj.png"></cover-image>
+              <cover-view class="collo-title">
+                <cover-view class="collo-text">统计数据</cover-view>
+                <cover-image class="collo-arrow" src="{{isSidebarTabActive[1] ? './images/jinyibu-xia.png' : './images/jinyibu.png'}}"></cover-image>
+              </cover-view>
+            </cover-view>
+            <cover-view class="collo-divider"></cover-view>
+          
+          
+          </cover-view>
+
+
+
+        </cover-view>
+      </cover-view>
+    </map>
+  </view>
+</view>
