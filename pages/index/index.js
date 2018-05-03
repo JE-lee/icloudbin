@@ -3,39 +3,53 @@
 const SIDEBAR_WIDTH  = 554
 Page({
   data: {
-    sidebarAnimationData: {},
-    isSidebarShow: false,
-    isSidebarTabActive: [false,false]
+    trashcanList: [
+      {
+        name: '垃圾桶A',
+        status: 0, //0 正常，1，故障，2 缺纸
+        trashList: [
+          {
+            type: 0,
+            persent: 0.3
+          },
+          {
+            type: 1,
+            persent: 0.4
+          },
+          {
+            type: 2,
+            persent: 0.5
+          }
+        ],
+        message: 'A筒故障A筒故障A筒故障A筒故障A筒故障A筒故障A筒故障A筒故障A筒故障'
+      },
+      {
+        name: '垃圾桶BB',
+        status: 1, //0 正常，1，故障，2 缺纸
+        trashList: [
+          {
+            type: 1,
+            persent: 0.3
+          },
+          {
+            type: 2,
+            persent: 0.9
+          }
+        ],
+        message: 'B筒缺纸B筒缺纸B筒缺纸B筒缺纸B筒缺纸B筒缺纸B筒缺纸B筒缺纸B筒缺纸B筒缺纸'
+      }
+
+    ],
+    trashIndex: 0,
+    isPopShow: false
   },
-  onReady(e){
-    this._showSidebar(false)
-  },
-  sidebarTap(e){
-    let index = e.currentTarget.dataset.index,
-      isActive = this.data.isSidebarTabActive[index]
-    this.setData({ [`isSidebarTabActive[${index}]`]: !isActive })
+  popupMaskTap(e){
+    this.setData({ isPopShow: false })
   },
   memberTap(e){
-    this._showSidebar(true)
+    this.setData({ isPopShow: true })
   },
   saomaTap(e){
-  },
-  hideSidebar(e){
-    this.data.isSidebarShow && this._showSidebar(false)
-  },
-  _showSidebar(show){
-    let animationSidebar = wx.createAnimation({
-      duration: 200,
-      timingFuction: 'ease'
-    })
-    if(show){
-      animationSidebar.translate(0).step()
-    }else{
-      animationSidebar.translate(-414).step()
-    }
-    this.setData({ 
-      sidebarAnimationData: animationSidebar.export(),
-      isSidebarShow: show
-    })
+    
   }
 })

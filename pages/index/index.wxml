@@ -1,3 +1,65 @@
+<wxs module="trashType">
+  module.exports = {
+    getTypeImg: function(index){
+      var p = './images/type';
+      switch(index){
+        case 0: 
+          return p + '/icon_boli@3x.png'
+        case 1: 
+          return p + '/icon_canchu@3x.png'
+        case 2: 
+          return p + '/icon_dianzi@3x.png'
+        case 3: 
+          return p + '/icon_jinshu@3x.png'
+        case 4: 
+          return p + '/icon_kehuishou@3x.png'
+        case 5: 
+          return p + '/icon_qita@3x.png'
+        case 6:
+          return p + '/icon_suliao@3x.png'
+        case 7: 
+          return p + '/icon_yifu@3x.png'
+        case 8: 
+          return p + '/icon_youhai@3x.png'
+        case 9:
+          return p + '/icon_zhilei@3x.png'
+         case 9: 
+          return p + '/icon_zhisupin@3x.png'
+      }
+    },
+    getTypeName: function(index){
+      switch(index){
+        case 0: 
+          return '玻璃'
+        case 1: 
+          return '餐厨'
+        case 2: 
+          return '电子'
+        case 3: 
+          return '金属'
+        case 4: 
+          return '可回收'
+        case 5: 
+          return '其他'
+        case 6: 
+          return '塑料'
+        case 7: 
+          return '衣服'
+        case 8: 
+          return '有害'
+        case 9: 
+          return '纸类'
+        case 10:
+          return '纸塑瓶'
+      }
+    },
+    getProgressWidth: function(persent){
+      var w = 175
+      return Math.floor(w * persent) + 'px'
+    }
+  }
+</wxs>
+
 <view class="page" >
   <view class="mapwrapper" >
     <map class="map" >
@@ -5,86 +67,53 @@
         <cover-image class="img__member" src="./images/btn_cbl.png" bindtap="memberTap"></cover-image>
         <cover-image class="img__saoma" src="./images/saoyisao.png" bindtap="saomaTap"></cover-image>
       </cover-view>
-
-      <cover-view class="sidebar" animation="{{sidebarAnimationData}}">
-        <cover-view class="sidebar-mask" bindtap="hideSidebar"></cover-view>
-        <cover-view class="sidebar-content">
-          <cover-view class="head">
-            <cover-image class="head-img" src="./images/head.png"></cover-image>
-            <cover-view class="name">用户名称</cover-view>
-          </cover-view>
-          <!--垃圾桶列表-->
-          <cover-view class="bucktlist collo-tap" bindtap="sidebarTap" data-index="{{0}}">
-
-            <cover-view class="collo-tappoint">
-              <cover-image class="collo-icon" src="./images/ljt.png"></cover-image>
-              <cover-view class="collo-title">
-                <cover-view class="collo-text">垃圾桶列表</cover-view>
-                <cover-image class="collo-arrow" src="{{isSidebarTabActive[0] ? './images/jinyibu-xia.png' : './images/jinyibu.png'}}"></cover-image>
-              </cover-view>
+      
+      <!--弹框组件-->
+      <cover-view class="popup" hidden="{{!isPopShow}}">
+        <cover-view class="mask" bindtap="popupMaskTap"></cover-view>
+        <cover-view class="trashinfo">
+          <cover-view class="title">{{trashcanList[trashIndex].name}}</cover-view>
+          <cover-view class="body">
+            <cover-view class="status">
+              <cover-view>运行状态</cover-view>
+              <cover-image class="status-img" src="{{trashcanList[trashIndex].status == 0 ? './images/btn_zc.png' : (trashcanList[trashIndex].status == 1 ? './images/btn_gz.png' : './images/btn_qz.png')}}"></cover-image>
             </cover-view>
-            <cover-view class="collo-divider" wx:if="{{!isSidebarTabActive[0]}}"></cover-view>
-            <cover-view class="collo-tapcontent">
+            
+            <!--垃圾类型列表-->
+            <cover-view class="trash-list">
 
-              <cover-view class="collo-contentitem">
-                <cover-view class="con">
-                  <cover-view class="con-name">垃圾桶A</cover-view>
-                  <cover-view class="con-status">
-                    <cover-view class="con-persent">60%</cover-view>
-                    <cover-image class="con-status-img" src="./images/btn_qz.png"></cover-image>
+              <cover-view class="trash-item" wx:for="{{trashcanList[trashIndex].trashList}}" wx:if="{{index < 2}}" wx:key="{{index}}">
+                <cover-image class="item-image" src="{{trashType.getTypeImg(item.type)}}"></cover-image>
+                <cover-view class="right">
+                  <cover-view class="text">{{trashType.getTypeName(item.type)}}</cover-view>
+                  <cover-view class="item-porgress">
+                    <cover-view class="front" style="width:{{trashType.getProgressWidth(item.persent)}}"></cover-view>
                   </cover-view>
                 </cover-view>
-                <cover-view class="item-divider"></cover-view>
+                <cover-view class="persent">{{item.persent * 100}}%</cover-view>
               </cover-view>
-              
-              <cover-view class="collo-contentitem">
-                <cover-view class="con">
-                  <cover-view class="con-name">垃圾桶A</cover-view>
-                  <cover-view class="con-status">
-                    <cover-view class="con-persent">60%</cover-view>
-                    <cover-image class="con-status-img" src="./images/btn_qz.png"></cover-image>
-                  </cover-view>
-                </cover-view>
-                <cover-view class="item-divider"></cover-view>
-              </cover-view>
-
-              <cover-view class="collo-contentitem">
-                <cover-view class="con">
-                  <cover-view class="con-name">垃圾桶A</cover-view>
-                  <cover-view class="con-status">
-                    <cover-view class="con-persent">60%</cover-view>
-                    <cover-image class="con-status-img" src="./images/btn_qz.png"></cover-image>
-                  </cover-view>
-                </cover-view>
-                <cover-view class="item-divider"></cover-view>
-              </cover-view>
-
-              
-
-              
-
 
             </cover-view>
 
-          </cover-view>
-
-          <!--统计数据-->
-          <cover-view class="statistics collo-tap" bindtap="sidebarTap" data-index="{{1}}">
-
-            <cover-view class="collo-tappoint">
-              <cover-image class="collo-icon" src="./images/tjsj.png"></cover-image>
-              <cover-view class="collo-title">
-                <cover-view class="collo-text">统计数据</cover-view>
-                <cover-image class="collo-arrow" src="{{isSidebarTabActive[1] ? './images/jinyibu-xia.png' : './images/jinyibu.png'}}"></cover-image>
+            <!--最新消息-->
+            <cover-view class="news">
+              <cover-view>最新消息:</cover-view>
+              <cover-view class="news-detail">
+                <cover-view class="dot"></cover-view>
+                <cover-view class="text">A筒异常A筒异常A筒异常A筒异常A筒异常A筒异常A筒异常A筒异常</cover-view>
+                <cover-view class="time">2018/4/25</cover-view>
               </cover-view>
             </cover-view>
-            <cover-view class="collo-divider" wx:if="{{!isSidebarTabActive[1]}}"> </cover-view>
-          
-          
+
+            <!--按钮区域-->
+            <cover-view class="control">
+              <cover-view class="control-btn btn-route">路线</cover-view>
+              <cover-view class="control-btn ">更多</cover-view>
+            </cover-view>
+           
+            
           </cover-view>
-
-
-
+        
         </cover-view>
       </cover-view>
     </map>
