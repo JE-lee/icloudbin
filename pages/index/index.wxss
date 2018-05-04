@@ -59,7 +59,8 @@
 .trashinfo .title{
   font-size: 36rpx;
   text-align: center;
-  padding: 28rpx 0 ;
+  height: 92rpx;
+  line-height: 92rpx;
   margin-bottom: 29rpx;
   background-color: rgb(88,215,199);
   color: #fff;
@@ -99,6 +100,7 @@
 .trash-item .right{
   display: flex;
   flex-direction: column;
+  height: 62rpx;
 }
 
 .trash-item .right .text{
@@ -149,8 +151,8 @@
   word-break: break-all ; 
   word-wrap: break-word ; 
   white-space: pre-line ;
+  flex-wrap: wrap;
   height: 100rpx;
-  overflow: hidden;
   line-height: 1.8;
 }
 .news .time{
