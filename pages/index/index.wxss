@@ -100,6 +100,7 @@
 .trash-item .right{
   display: flex;
   flex-direction: column;
+  height: 62rpx;
 }
 
 .trash-item .right .text{
@@ -150,8 +151,8 @@
   word-break: break-all ; 
   word-wrap: break-word ; 
   white-space: pre-line ;
+  flex-wrap: wrap;
   height: 100rpx;
-  overflow: hidden;
   line-height: 1.8;
 }
 .news .time{

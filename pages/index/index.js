@@ -60,6 +60,13 @@ Page({
       this._markCurrentPosition({ longitude, latitude })
       //垃圾桶的位置
       this._mark(this.data.trashcanList)
+    }).catch(err => {
+      let pattern = /getLocation:fail auth deny/
+      if(pattern.test(err.errMsg)){
+        //用户拒绝
+      }else{
+        //获取失败
+      }
     })
   },
   onReady(e){

@@ -55,7 +55,7 @@ export function getCurrentPosition() {
         resolve({ longitude, latitude })
       },
       fail: function (err) {
-        reject(`get current position fail: ${err}`)
+        reject(err)
       }
     })
   })
