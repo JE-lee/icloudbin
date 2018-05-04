@@ -59,7 +59,8 @@
 .trashinfo .title{
   font-size: 36rpx;
   text-align: center;
-  padding: 28rpx 0 ;
+  height: 92rpx;
+  line-height: 92rpx;
   margin-bottom: 29rpx;
   background-color: rgb(88,215,199);
   color: #fff;

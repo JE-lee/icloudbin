@@ -62,7 +62,8 @@
 
 <view class="page" >
   <view class="mapwrapper" >
-    <map class="map" >
+    <map id="map" class="map" longitude="{{currentPosition.longitude}}" latitude="{{currentPosition.latitude}}" markers="{{positionMarkes}}" polyline="{{polyline}}"
+     bindmarkertap="mapMarkerTap">
       <cover-view class="btn-con">
         <cover-image class="img__member" src="./images/btn_cbl.png" bindtap="memberTap"></cover-image>
         <cover-image class="img__saoma" src="./images/saoyisao.png" bindtap="saomaTap"></cover-image>
@@ -100,14 +101,14 @@
               <cover-view>最新消息:</cover-view>
               <cover-view class="news-detail">
                 <cover-view class="dot"></cover-view>
-                <cover-view class="text">A筒异常A筒异常A筒异常A筒异常A筒异常A筒异常A筒异常A筒异常</cover-view>
+                <cover-view class="text">{{trashcanList[trashIndex].message}}</cover-view>
                 <cover-view class="time">2018/4/25</cover-view>
               </cover-view>
             </cover-view>
 
             <!--按钮区域-->
             <cover-view class="control">
-              <cover-view class="control-btn btn-route">路线</cover-view>
+              <cover-view class="control-btn btn-route" bindtap="pathTap">路线</cover-view>
               <cover-view class="control-btn ">更多</cover-view>
             </cover-view>
            
