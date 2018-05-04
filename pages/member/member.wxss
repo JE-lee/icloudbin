@@ -1,0 +1,52 @@
+.page{
+  background-color: #fff;
+  font-size: 32rpx;
+  padding: 0 66rpx;
+}
+
+.head{
+  margin-top: 64rpx;
+  margin-bottom: 80rpx;
+  display: flex;
+  align-items: center;
+  font-size: 34rpx;
+}
+.head .member-avater{
+  width: 144rpx;
+  height: 144rpx;
+  margin-right: 50rpx;
+}
+.body-item{
+  margin-bottom: 40rpx;
+}
+
+.body .item-img{
+  width: 44rpx;
+  height: 44rpx;
+}
+.body .item-name{
+  font-size: 32rpx;
+  margin-left: 30rpx;
+}
+
+.body-item .trash-list{
+  padding-left: 100rpx;
+  font-size: 30rpx;
+}
+.body-item .trash-item{
+  display: flex;
+  align-items: center;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #999;
+}
+.body-item .trash-name{
+  flex: 1;
+}
+.body-item .trash-persent{
+  color: #666;
+  margin-right: 20rpx;
+}
+.body-item .trash-status-img{
+  width: 50rpx;
+  height: 30rpx;
+}

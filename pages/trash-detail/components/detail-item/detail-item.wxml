@@ -1,0 +1,5 @@
+<!--pages/trash-detail/components/detail-item.wxml-->
+<view class="content" style="font-size:{{fontSize}}rpx">
+  <view class="label">{{label}}</view>
+  <view class="value">{{value}}</view>
+</view>

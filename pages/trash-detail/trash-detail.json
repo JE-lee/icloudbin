@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "云筒",
+  "usingComponents": {
+    "detail-item": "./components/detail-item/detail-item",
+    "progress": "./components/progress/progress"
+  }
+}

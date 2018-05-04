@@ -47,7 +47,7 @@ Page({
     this.setData({ isPopShow: false })
   },
   memberTap(e){
-    this.setData({ isPopShow: true })
+    this.$route('/pages/member/member')
   },
   saomaTap(e){
     

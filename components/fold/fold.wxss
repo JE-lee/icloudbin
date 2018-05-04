@@ -1,0 +1,20 @@
+.fold{
+  background-color:#fff;
+}
+.point{
+  display: flex;
+  align-items: center;
+  padding-bottom: 40rpx;
+  border-bottom: 1rpx solid #999;
+}
+.point.unfold{
+  border-bottom: none;
+}
+.point .name{
+  flex: 1;
+}
+
+.point .arrow{
+  width: 28rpx;
+  height: 32rpx;
+}

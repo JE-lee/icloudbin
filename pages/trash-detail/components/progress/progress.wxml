@@ -1,0 +1,11 @@
+<!--pages/trash-detail/components/progress/progress.wxml-->
+<wxs module="progress">
+  module.exports = {
+    getProgressWidth: function(persent){
+      return Math.floor(540*persent)
+    }
+  }
+</wxs>
+<view class="progress">
+  <view class="front" style="width:{{progress.getProgressWidth(persent)}}rpx"></view>
+</view>

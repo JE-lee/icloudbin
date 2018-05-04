@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "云筒",
+  "usingComponents": {
+    "fold": "/components/fold/fold"
+  }
+}

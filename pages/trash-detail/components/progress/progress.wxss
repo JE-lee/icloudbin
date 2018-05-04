@@ -1,0 +1,17 @@
+/* pages/trash-detail/components/progress/progress.wxss */
+.progress{
+  background-color:#e7e7e7;
+  position: relative;
+  width: 540rpx;
+  height: 14rpx;
+  border-radius: 12rpx;
+}
+
+.progress .front{
+  background-color:#58d7c7;
+  border-radius: 12rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+}

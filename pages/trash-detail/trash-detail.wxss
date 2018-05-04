@@ -1,0 +1,62 @@
+.page{
+  font-size: 34rpx;
+  background-color: #f3f3f3;
+  min-height: 100vh;
+}
+
+.tab{
+  line-height: 82rpx;
+  text-align: center;
+  color:#999;
+  display: flex;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #d6d6d6;
+  background-color:#fff;
+}
+.tab-item{
+  flex: 1;
+}
+.tab-item.active{
+  color: #333;
+}
+.tab-item:nth-of-type(1){
+  border-right: 1rpx solid #d6d6d6;
+}
+
+.body-item{
+  margin-bottom: 30rpx;
+  background-color:#fff;
+  font-size: 30rpx;
+  padding-bottom: 40rpx;
+}
+
+.trash-overview{
+  padding-bottom: 40rpx;
+  overflow: hidden;
+  background-color:#fff;
+}
+
+.body-item-title{
+  line-height: 74rpx;
+  font-size: 34rpx;
+  padding-left: 34rpx;
+  padding-right: 30rpx;
+  border-bottom: 1rpx solid #d6d6d6;
+}
+
+.trash-info-item{
+  padding-left: 34rpx;
+  padding-right: 30rpx;
+  display: flex;
+  margin-top: 30rpx;
+  align-items: center;
+}
+
+.trash-info-type{
+  margin-right: 18rpx;
+}
+.trash-info-persent{
+  margin-left: 20rpx;
+  font-size: 24rpx;
+}
+

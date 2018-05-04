@@ -1,6 +1,8 @@
 {
   "pages": [
+    "pages/trash-detail/trash-detail",
     "pages/index/index",
+    "pages/member/member",
     "pages/login/login"
     
   ],
