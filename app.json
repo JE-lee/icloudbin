@@ -1,9 +1,11 @@
 {
   "pages": [
-    "pages/trash-detail/trash-detail",
     "pages/index/index",
+    "pages/deduct/deduct",
+    "pages/trash-scan/trash-scan",
     "pages/member/member",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/trash-detail/trash-detail"
     
   ],
   "window": {

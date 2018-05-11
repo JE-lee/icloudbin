@@ -1,0 +1,11 @@
+<!--components/upload-image/upload-image.wxml-->
+<view class="content">
+  <view class="item" wx:if="{{imageList.length < 3}}">
+    <image class="item-plus" src="./images/sctp@3x.png" bindtap="chooseImage"></image>
+  </view>
+  <view class="item" wx:for="{{imageList}}" wx:key="{{index}}">
+    <image class="item-img" src="{{item}}" data-src="{{item}}"
+    bindtap="plusImage" mode="aspectFill"></image>
+    <image class="item-close" src="./images/shanchu@3x.png" bindtap="delete" data-index="{{index}}"></image>
+  </view>
+</view>

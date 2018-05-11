@@ -1,0 +1,22 @@
+/* components/upload-image/upload-image.wxss */
+.content{
+  display: flex;
+  flex-wrap: wrap;
+}
+.item{
+  margin-right: 30rpx;
+  border-radius: 10rpx;
+  position: relative;
+}
+.item-plus,
+.item-img{
+  width: 200rpx;
+  height: 200rpx;
+}
+.item-close{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  right: -10rpx;
+  top: -10rpx;
+}

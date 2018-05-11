@@ -1,0 +1,57 @@
+/* pages/trash-scan/trash-scan.wxss */
+.page{
+  background-color:#fff;
+  line-height: 1.0;
+  padding-left: 30rpx;
+  padding-right: 20rpx;
+}
+.cell{
+  display: flex;
+  align-items: center;
+  padding: 40rpx 0;
+  border-bottom: 1rpx solid #d6d6d6;
+}
+.cell .label{
+  font-size: 34rpx;
+}
+.cell .value{
+  flex: 1;
+  text-align: right;
+  font-size: 32rpx;
+  color: #999;
+}
+.cell .cell-arrow{
+  width: 28rpx;
+  height: 32rpx;
+  margin-left: 20rpx;
+}
+.cell-noborder{
+  border-bottom: none;
+}
+
+.controls{
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  bottom: 70rpx;
+  right: 0;
+}
+
+.controls .btn{
+  border: 1rpx solid #d6d6d6;
+  border-radius: 40rpx;
+  line-height: 76rpx;
+  padding: 0 42rpx;
+  font-size: 34rpx;
+  color: #666;
+}
+.controls .btn-saomiao{
+  margin-right: 90rpx;
+}
+
+.controls .btn-sure{
+  border-color:#58d7c7;
+  color:#58d7c7;
+}
+  

@@ -1,0 +1,19 @@
+/* pages/deduct/deduct.wxss */
+.page{
+  background-color:#fff;
+  padding: 0 34rpx;
+  font-size: 30rpx;
+  color:#333;
+}
+.cell{
+  padding: 40rpx 0;
+  border-bottom: 1rpx solid #d6d6d6;
+  display: flex;
+}
+.cell .reason{
+  width: 80%;
+}
+.cell .score{
+  width: 20%;
+  text-align: right;
+}

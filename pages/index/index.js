@@ -1,6 +1,8 @@
 // index.js
 // 获取应用实例
 import { getCurrentPosition, getGuidePath } from '../../utils/map'
+import api from '../../utils/api'
+import wxex from '../../utils/wxex'
 const SIDEBAR_WIDTH  = 554
 Page({
   data: {
@@ -52,20 +54,31 @@ Page({
   },
 
   onLoad(e) {
-    const origin = "116.481028,39.989643"
-    const destination = "116.434446,39.90816"
+    
     getCurrentPosition().then(({ longitude, latitude }) => {
-      console.log("currentPosition:", longitude, latitude)
       this.setData({ currentPosition: { longitude, latitude } })
       this._markCurrentPosition({ longitude, latitude })
       //垃圾桶的位置
       this._mark(this.data.trashcanList)
     }).catch(err => {
       let pattern = /getLocation:fail auth deny/
+      this._requestPermission()
       if(pattern.test(err.errMsg)){
         //用户拒绝
+        
       }else{
         //获取失败
+      }
+    })
+  },
+  _requestPermission(){
+    wx.showModal({
+      title: '获取用户位置',
+      content: '云筒需要获取你的位置才能都正常使用',
+      success: ({confirm, cancel}) => {
+        if(confirm){
+          wx.openSetting()
+        }
       }
     })
   },
@@ -80,7 +93,30 @@ Page({
     this.$route('/pages/member/member')
   },
   saomaTap(e){
-    
+    wx.scanCode({
+      success: (res) => {
+        
+        console.log('saoma res',res)
+        if(/ok/.test(res.errMsg)){
+          //扫码成功
+          api.getTrashDataFromQurcode(res.result)
+            .then((res) => {
+              console.log('trash data',res)
+              let key = 'scanTrashQurcode'
+              wxex.set(key, res)
+              this.$route(`/pages/trash-scan/trash-scan?wxex=${key}`)
+            }).catch((err) =>{
+              wx.showModal({
+                title: '扫描二维码',
+                content: err 
+              })
+            })
+        }
+      }
+    })
+  },
+  gotoTrashDetail(e){
+    this.$route('/pages/trash-detail/trash-detail')
   },
   pathTap(e){
     let { currentPosition , trashcanList, trashIndex} = this.data

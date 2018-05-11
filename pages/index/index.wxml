@@ -65,8 +65,8 @@
     <map id="map" class="map" longitude="{{currentPosition.longitude}}" latitude="{{currentPosition.latitude}}" markers="{{positionMarkes}}" polyline="{{polyline}}"
      bindmarkertap="mapMarkerTap">
       <cover-view class="btn-con">
-        <cover-image class="img__member" src="./images/btn_cbl.png" bindtap="memberTap"></cover-image>
         <cover-image class="img__saoma" src="./images/saoyisao.png" bindtap="saomaTap"></cover-image>
+        <cover-image class="img__member" src="./images/member.png" bindtap="memberTap"></cover-image>
       </cover-view>
       
       <!--弹框组件-->
@@ -109,7 +109,7 @@
             <!--按钮区域-->
             <cover-view class="control">
               <cover-view class="control-btn btn-route" bindtap="pathTap">路线</cover-view>
-              <cover-view class="control-btn ">更多</cover-view>
+              <cover-view class="control-btn " bindtap="gotoTrashDetail">更多</cover-view>
             </cover-view>
            
             

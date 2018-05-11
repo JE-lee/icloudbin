@@ -3,31 +3,42 @@
     <view class="tab-item {{activeIndex ==0 ? 'active' : ''}}" bindtap="tabItemTap" data-index="{{0}}">信息</view>
     <view class="tab-item {{activeIndex ==1 ? 'active' : ''}}" bindtap ="tabItemTap" data-index="{{1}}">历史消息</view>
   </view>
-  <view class="trash-overview body-item">
-    <detail-item label="垃圾桶编号" value="56987523654" fontSize="34" ></detail-item>
-    <detail-item label="垃圾桶名称" value="A桶" fontSize="34"></detail-item>
+
+  <view wx:if="{{activeIndex ==0}}">
+    <view class="trash-overview body-item">
+        <detail-item label="垃圾桶编号" value="56987523654" fontSize="34" ></detail-item>
+        <detail-item label="垃圾桶名称" value="A桶" fontSize="34"></detail-item>
+      </view>
+      <!--垃圾桶分类信息-->
+      <view class="body-item">
+        <view class="body-item-title">垃圾桶分类信息</view>
+        <view class="trash-info-item">
+          <view class="trash-info-type">塑料</view>
+          <progress persent="{{0.3}}"></progress>
+          <view class="trash-info-persent">30%</view>
+        </view>
+      </view>
+    
+      <!--传感器状态-->
+      <view class="body-item">
+        <view class="body-item-title">传感器状态</view>
+        <detail-item label="打印机状态" value="打印" ></detail-item>
+        <detail-item label="打印机状态" value="打印" ></detail-item>
+      </view>
+    
+      <!--传感器数据统计-->
+      <view class="body-item">
+        <view class="body-item-title">传感器数据统计</view>
+        <detail-item label="打印机剩余纸张" value="30" ></detail-item>
+        <detail-item label="打印机剩余纸张" value="130" ></detail-item>
+      </view>
   </view>
-  <!--垃圾桶分类信息-->
-  <view class="body-item">
-    <view class="body-item-title">垃圾桶分类信息</view>
-    <view class="trash-info-item">
-      <view class="trash-info-type">塑料</view>
-      <progress persent="{{0.3}}"></progress>
-      <view class="trash-info-persent">30%</view>
+
+  <view wx:else class="message">
+    <view class="message-item">
+      <view class="text">A筒异常A筒异常A筒异常A筒异常A筒异常A筒异常A筒异常A筒异常A筒异常A筒异常</view>
+      <view class="time">2018/4/12</view>
     </view>
   </view>
-
-  <!--传感器状态-->
-  <view class="body-item">
-    <view class="body-item-title">传感器状态</view>
-    <detail-item label="打印机状态" value="打印" ></detail-item>
-    <detail-item label="打印机状态" value="打印" ></detail-item>
-  </view>
-
-  <!--传感器数据统计-->
-  <view class="body-item">
-    <view class="body-item-title">传感器数据统计</view>
-    <detail-item label="打印机剩余纸张" value="30" ></detail-item>
-    <detail-item label="打印机剩余纸张" value="130" ></detail-item>
-  </view>
+  
 </view>

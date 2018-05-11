@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "云筒",
+  "usingComponents": {
+    "upload-iamge": "/components/upload-image/upload-image"
+  }
+}
