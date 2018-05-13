@@ -5,8 +5,8 @@
     "pages/trash-scan/trash-scan",
     "pages/member/member",
     "pages/login/login",
-    "pages/trash-detail/trash-detail"
-    
+    "pages/trash-detail/trash-detail",
+    "pages/user-authorize/user-authorize"
   ],
   "window": {
     "backgroundTextStyle": "light",

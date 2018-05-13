@@ -53,11 +53,16 @@
 }
 
 .trash-info-type{
+  display: block;
+  width: 100rpx;
   margin-right: 18rpx;
+  white-space: nowrap;
+  word-break: keep-all;
 }
 .trash-info-persent{
   margin-left: 20rpx;
   font-size: 24rpx;
+  width: 80rpx;
 }
 
 
@@ -76,7 +81,7 @@
   padding-left: 20rpx;
   font-size: 30rpx;
   line-height: 52rpx;
-  height: 104rpx;
+  max-height: 104rpx;
   overflow:hidden;
   color:#333;
   width: 410rpx;

@@ -3,28 +3,31 @@
     getTypeImg: function(index){
       var p = './images/type';
       switch(index){
-        case 0: 
+        case '玻璃': 
           return p + '/icon_boli@3x.png'
-        case 1: 
+        case '餐厨': 
           return p + '/icon_canchu@3x.png'
-        case 2: 
+        case '电子': 
           return p + '/icon_dianzi@3x.png'
-        case 3: 
+        case '金属': 
           return p + '/icon_jinshu@3x.png'
-        case 4: 
+        case '可回收': 
           return p + '/icon_kehuishou@3x.png'
-        case 5: 
+        case '其他': 
           return p + '/icon_qita@3x.png'
-        case 6:
+        case '塑料':
           return p + '/icon_suliao@3x.png'
-        case 7: 
+        case '衣服': 
           return p + '/icon_yifu@3x.png'
-        case 8: 
+        case '有害': 
           return p + '/icon_youhai@3x.png'
-        case 9:
+        case '纸类':
           return p + '/icon_zhilei@3x.png'
-         case 9: 
+        case '纸塑瓶': 
           return p + '/icon_zhisupin@3x.png'
+        default: 
+          return p + '/icon_qita@3x.png'
+
       }
     },
     getTypeName: function(index){
@@ -51,11 +54,13 @@
           return '纸类'
         case 10:
           return '纸塑瓶'
+        default: 
+          return '其他'
       }
     },
     getProgressWidth: function(persent){
       var w = 175
-      return Math.floor(w * persent) + 'px'
+      return Math.floor(w * persent / 100) + 'px'
     }
   }
 </wxs>
@@ -65,33 +70,34 @@
     <map id="map" class="map" longitude="{{currentPosition.longitude}}" latitude="{{currentPosition.latitude}}" markers="{{positionMarkes}}" polyline="{{polyline}}"
      bindmarkertap="mapMarkerTap">
       <cover-view class="btn-con">
-        <cover-image class="img__saoma" src="./images/saoyisao.png" bindtap="saomaTap"></cover-image>
-        <cover-image class="img__member" src="./images/member.png" bindtap="memberTap"></cover-image>
+        <cover-image class="img__dingwei" src="./images/btn_dingwei@2x.png" bindtap="dingweiTap"></cover-image>
+        <cover-image class="img__saoma" src="./images/saoyisao@2x.png" bindtap="saomaTap"></cover-image>
+        <cover-image class="img__member" src="./images/btn_cbl@2x.png" bindtap="memberTap"></cover-image>
       </cover-view>
       
       <!--弹框组件-->
       <cover-view class="popup" hidden="{{!isPopShow}}">
         <cover-view class="mask" bindtap="popupMaskTap"></cover-view>
         <cover-view class="trashinfo">
-          <cover-view class="title">{{trashcanList[trashIndex].name}}</cover-view>
+          <cover-view class="title">{{trashList[trashIndex].name}}</cover-view>
           <cover-view class="body">
             <cover-view class="status">
               <cover-view>运行状态</cover-view>
-              <cover-image class="status-img" src="{{trashcanList[trashIndex].status == 0 ? './images/btn_zc.png' : (trashcanList[trashIndex].status == 1 ? './images/btn_gz.png' : './images/btn_qz.png')}}"></cover-image>
+              <cover-image class="status-img" src="{{trashList[trashIndex].all_status == 1 ? './images/btn_zc.png' : (trashList[trashIndex].all_status == 0 ? './images/btn_gz.png' : './images/btn_qz.png')}}"></cover-image>
             </cover-view>
             
             <!--垃圾类型列表-->
             <cover-view class="trash-list">
 
-              <cover-view class="trash-item" wx:for="{{trashcanList[trashIndex].trashList}}" wx:if="{{index < 2}}" wx:key="{{index}}">
-                <cover-image class="item-image" src="{{trashType.getTypeImg(item.type)}}"></cover-image>
+              <cover-view class="trash-item" wx:for="{{trashList[trashIndex].sort_list}}" wx:if="{{index < 2}}" wx:key="{{index}}">
+                <cover-image class="item-image" src="{{trashType.getTypeImg(item.sort_name)}}"></cover-image>
                 <cover-view class="right">
-                  <cover-view class="text">{{trashType.getTypeName(item.type)}}</cover-view>
+                  <cover-view class="text">{{item.sort_name}}</cover-view>
                   <cover-view class="item-porgress">
-                    <cover-view class="front" style="width:{{trashType.getProgressWidth(item.persent)}}"></cover-view>
+                    <cover-view class="front" style="width:{{trashType.getProgressWidth(item.trash_high)}}"></cover-view>
                   </cover-view>
                 </cover-view>
-                <cover-view class="persent">{{item.persent * 100}}%</cover-view>
+                <cover-view class="persent">{{item.trash_high }}%</cover-view>
               </cover-view>
 
             </cover-view>
@@ -99,10 +105,10 @@
             <!--最新消息-->
             <cover-view class="news">
               <cover-view>最新消息:</cover-view>
-              <cover-view class="news-detail">
+              <cover-view class="news-detail" wx:if="{{trashList[trashIndex].list_message.length > 0}}">
                 <cover-view class="dot"></cover-view>
-                <cover-view class="text">{{trashcanList[trashIndex].message}}</cover-view>
-                <cover-view class="time">2018/4/25</cover-view>
+                <cover-view class="text">{{trashList[trashIndex].list_message[0].message}}</cover-view>
+                <cover-view class="time">{{trashList[trashIndex].list_message[0].createtime}}</cover-view>
               </cover-view>
             </cover-view>
 
@@ -120,3 +126,4 @@
     </map>
   </view>
 </view>
+

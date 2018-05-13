@@ -1,8 +1,8 @@
 <!--pages/member/member.wxml-->
 <view class="page">
   <view class="head">
-    <image class="member-avater" src="./images/head.png"></image>
-    <view class="member-name">用户名称</view>
+    <image class="member-avater" src="{{userInfo.avatarUrl}}"></image>
+    <view class="member-name">{{userInfo.nickName}}</view>
   </view>
 
   <!--列表-->
@@ -13,10 +13,10 @@
           <image class="item-img" slot="icon" src="./images/ljt.png"></image>
           <view class="item-name" slot="name">垃圾桶列表</view>
           <view class="trash-list" slot="content">
-            <view class="trash-item">
-              <view class="trash-name">垃圾桶A</view>
-              <view class="trash-persent">80%</view>
-              <image class="trash-status-img" src="./images/btn_gz.png"></image>
+            <view class="trash-item" wx:for="{{trashList}}" wx:key="{{index}}" data-index="{{index}}" bindtap="trashItemTap">
+              <view class="trash-name">{{item.name}}</view>
+              <view class="trash-persent">{{item.persent}}%</view>
+              <image class="trash-status-img" src="{{item.all_status == 1 ? './images/btn_zc.png' : (item.all_status == 0 ? './images/btn_gz.png' : './images/btn_qz.png')}}"></image>
             </view>
           </view>
         </fold>

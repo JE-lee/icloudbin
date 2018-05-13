@@ -1,4 +1,5 @@
 // pages/member/member.js
+import wxex from '../../utils/wxex'
 Page({
 
   /**
@@ -12,7 +13,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    let userInfo = wxex.get('user.userInfo')
+    let key = options.wxex
+    let trashList = wxex.get(key)
+    this.setData({ userInfo,trashList })
+    
+    
+  },
+  trashItemTap(e){
+    let index = e.currentTarget.dataset.index ,
+      sn = this.data.trashList[index].sn
+    this.$route(`/pages/trash-detail/trash-detail?sn=${sn}`)
   },
 
   /**

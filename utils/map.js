@@ -12,10 +12,16 @@ export function getGuidePath(origin, destination) {
       mask: true
     })
     var myAmapFun = new Guide.AMapWX({ key: config.GUIDE_KEY });
-    myAmapFun.getWalkingRoute({
+    let time = setTimeout(() => {
+      wx.hideLoading()
+      reject('path guide timeout')
+    },5000)
+    myAmapFun.getDrivingRoute({
       origin,
       destination,
       success: function (data) {
+        
+        clearTimeout(time)
         var points = [];
         if (data.paths && data.paths[0] && data.paths[0].steps) {
           var steps = data.paths[0].steps;
@@ -39,10 +45,13 @@ export function getGuidePath(origin, destination) {
       },
       fail: function (info) {
         reject(`get guide path fail: ${info}`)
+        clearTimeout(time)
         wx.hideLoading()
       },
      
     })
+    //超时5S
+    
   })
 
 }

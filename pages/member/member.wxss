@@ -15,6 +15,7 @@
   width: 144rpx;
   height: 144rpx;
   margin-right: 50rpx;
+  border-radius: 50%;
 }
 .body-item{
   margin-bottom: 40rpx;
@@ -36,7 +37,7 @@
 .body-item .trash-item{
   display: flex;
   align-items: center;
-  padding-bottom: 20rpx;
+  padding: 20rpx 0;
   border-bottom: 1rpx solid #999;
 }
 .body-item .trash-name{

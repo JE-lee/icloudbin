@@ -14,19 +14,25 @@
   height: 174rpx;
   display: flex;
   align-items: center;
+  justify-content: center;
   position: absolute;
   bottom: 130rpx;
+  left: 0;
+  right: 0;
+}
+.btn-con .img__dingwei{
+  width: 124rpx;
+  height: 124rpx;
 }
 .btn-con .img__member{
-  width: 80rpx;
-  height: 80rpx;
-  margin-left: 98rpx;
+  width: 124rpx;
+  height: 124rpx;
 }
 
 .btn-con .img__saoma{
-  width:300rpx;
-  height: 120rpx;
-  margin-left: 226rpx;
+  width:352rpx;
+  height: 174rpx;
+  margin: 0 45rpx;
 }
 
 /*弹框*/
