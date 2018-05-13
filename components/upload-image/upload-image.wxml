@@ -4,7 +4,7 @@
     <image class="item-plus" src="./images/sctp@3x.png" bindtap="chooseImage"></image>
   </view>
   <view class="item" wx:for="{{imageList}}" wx:key="{{index}}">
-    <image class="item-img" src="{{item}}" data-src="{{item}}"
+    <image class="item-img" src="{{item.imagePath}}" data-src="{{item}}"
     bindtap="plusImage" mode="aspectFill"></image>
     <image class="item-close" src="./images/shanchu@3x.png" bindtap="delete" data-index="{{index}}"></image>
   </view>

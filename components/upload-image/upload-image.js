@@ -42,7 +42,10 @@ Component({
           api.uploadDeductImage(tempFilePaths[0])
             .then((res) => {
               let list = this.data.imageList
-              list.unshift(tempFilePaths[0])
+              list.unshift({
+                imagePath: tempFilePaths[0],
+                url: res.url
+              })
               this.setData({ imageList: list})
               this.triggerEvent('upload',{url:res.url})
             }).catch(err => {
@@ -57,8 +60,9 @@ Component({
     delete(e){
       let index = e.currentTarget.dataset.index
       let list = this.data.imageList
-      list.splice(index, 1)
+      let deleteItem = list.splice(index, 1)
       this.setData({ imageList: list})
+      this.triggerEvent('delete',{url:deleteItem.url})
     }
   }
 })

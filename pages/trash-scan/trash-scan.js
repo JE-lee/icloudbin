@@ -38,6 +38,15 @@ Page({
     list.push(url)
     this.setData({ imageList: list})
   },
+  deleteImage(e){
+    let url = e.detail.url
+    let list = this.data.imageList
+    let index = list.findIndex(item => item == url)
+    if(index != -1){
+      list.splice(index, 1)
+      this.setData({ imageList: list})
+    }
+  },
   //重新扫描
   reScan(e){
     wx.scanCode({
@@ -81,7 +90,7 @@ Page({
       }).catch(err => {
         wx.showModal({
           title: '入站',
-          content: '提交失败，请重试'
+          content: err
         })
       })
   },

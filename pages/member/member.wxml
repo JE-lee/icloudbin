@@ -2,7 +2,7 @@
 <view class="page">
   <view class="head">
     <image class="member-avater" src="{{userInfo.avatarUrl}}"></image>
-    <view class="member-name">{{userInfo.nickName}}</view>
+    <view class="member-name">{{user_info.name}}</view>
   </view>
 
   <!--列表-->

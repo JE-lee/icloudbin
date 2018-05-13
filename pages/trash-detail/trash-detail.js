@@ -69,7 +69,7 @@ Page({
         let list = res.message_list
         list = list.map(item => {
           item = item.map(i => {
-            i.time = fmtDate(i.createtime)
+            i.time = fmtDate(i.createtime * 1000)
             return i
           })
           return item

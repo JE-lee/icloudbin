@@ -23,7 +23,7 @@
     
       <!--传感器状态-->
       <view class="body-item" wx:for="{{trashDetail.status}}" wx:key="{{index}}">
-        <view class="body-item-title">{{item[0].value}}</view>
+        <view class="body-item-title">传感器状态({{item[0].value}})</view>
         <block wx:for="{{trashDetail.status[0]}}" wx:if="{{item.show && index > 1}}" wx:key="{{index}}">
           <detail-item label="{{item.type}}" value="{{item.type_value}}" ></detail-item>
         </block>

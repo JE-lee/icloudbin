@@ -47,14 +47,23 @@ Page({
         })
         res.trash_list = l
         
-        this.setData({ trashList: res.trash_list})
+        this.setData({ 
+          trashList: res.trash_list,
+          user_info: res.user_info
+        })
         //标记垃圾桶位置
         this._mark(res.trash_list)
 
       }).catch(err => {
+        let content = ''
+        if(/ASK_FOR_ATTEMTION/.test(err)){
+          content = '您还不是管理人员'
+        }else{
+          content = '加载首页数据失败'
+        }
         wx.showModal({
-          title: '首页',
-          content: '加载首页数据失败',
+          title: '提示',
+          content,
           showCancel: false
         })
       })
@@ -127,11 +136,14 @@ Page({
     this.setData({ isPopShow: false });
   },
   memberTap(e) {
-    wxex.set('trashList',this.data.trashList)
-    this.$route( `/pages/member/member?wxex=trashList`);
+    wxex.set('trash',{
+      trashList: this.data.trashList,
+      user_info: this.data.user_info
+    })
+    this.$route( `/pages/member/member?wxex=trash`);
   },
   dingweiTap(e){
-    wx.showLoading({ title: '正在定位您的当前位置... '})
+    wx.showLoading({ title: '正在定位... '})
     // 所有路线都消失
     this.setData({ polyline: []})
     this._initCurrentPosition().then(() => {
@@ -147,11 +159,34 @@ Page({
   saomaTap(e) {
     wx.scanCode({
       success: res => {
-        console.log("saoma res", res);
         if (/ok/.test(res.errMsg)) {
           //扫码成功
-          api
-            .getTrashDataFromQurcode(res.result)
+          console.log('扫码结果',res.result)
+          let code = res.result 
+          let sn = this._isHasSN(res.result)
+          if(sn){
+            //跳转到详情页面
+            this.$route(`/pages/trash-detail/trash-detail?sn=${sn}`)
+          }else{
+            this._getTrashDataFromQurcode(res.result)
+          }
+          
+        }
+      }
+    });
+  },
+  //判断是否有sn
+  _isHasSN(code){
+    let pattern = /sn\/(.+)$/
+    let result = code.match(pattern)
+    if(result){
+      return result[1]
+    }else{
+      return ''
+    }
+  },
+  _getTrashDataFromQurcode(code){
+    api.getTrashDataFromQurcode(code)
             .then(res => {
               console.log("trash data", res);
               let key = "scanTrashQurcode";
@@ -165,9 +200,6 @@ Page({
                 showCancel: false
               });
             });
-        }
-      }
-    });
   },
   gotoTrashDetail(e) {
     let { trashList,trashIndex } = this.data,

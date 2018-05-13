@@ -50,7 +50,7 @@ function upload(url, path, name, formData) {
   // 获取token
   let retryCount = 0
   let _upload = function(reset){
-    getToken(reset).then(token => {
+    return getToken(reset).then(token => {
       wx.showLoading({
         title: "正在上传...",
         mask: true
@@ -142,10 +142,13 @@ function getToken(reset =  false) {
               resolve(encryptToken(privateKey))
             } else {
               let msg = res.data.msg
-              reject(msg);
+             
               if (res.data.code == config.NO_INVITE_CODE) {
                 // 没有注册邀请码
+                reject('ASK_FOR_ATTEMTION')
                 wx.redirectTo({ url: `/pages/login/login` });
+                return 
+                
               } else if (res.data.code == config.ASK_FOR_ATTEMTION) {
                 //要求关注公众号
                 wx.showModal({
@@ -154,6 +157,7 @@ function getToken(reset =  false) {
                   showCancel: false
                 });
               }
+              reject(msg);
             }
           },
           fail: err => {

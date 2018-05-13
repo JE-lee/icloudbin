@@ -15,8 +15,9 @@ Page({
   onLoad: function (options) {
     let userInfo = wxex.get('user.userInfo')
     let key = options.wxex
-    let trashList = wxex.get(key)
-    this.setData({ userInfo,trashList })
+    let trashList = wxex.get(key).trashList,
+      user_info = wxex.get(key).user_info
+    this.setData({ userInfo,trashList,user_info })
     
     
   },
