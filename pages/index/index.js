@@ -30,12 +30,17 @@ Page({
         let l = res.trash_list
         l = l.map(item => {
           // 计算垃圾桶的百分比
-          let residue = 0
+          
           let sort_list = item.sort_list
-          for(let i =0;i<sort_list.length;i++){
-            residue += (+sort_list[i].trash_high)
+          let residue = sort_list[0].trash_high
+          for(let i =1;i<sort_list.length;i++){
+            //residue += (+sort_list[i].trash_high)
+            if(sort_list[i].trash_high > residue)
+              residue = sort_list[i].trash_high
           }
           item.persent = residue
+          //icon图标
+          item.trashIcon = this._getTrashIconPath(residue)
           //将最新消息里面的时间格式化
           let list = item.list_message
           list = list.map(item => {
@@ -59,7 +64,7 @@ Page({
         if(/ASK_FOR_ATTEMTION/.test(err)){
           content = '您还不是管理人员'
         }else{
-          content = '加载首页数据失败'
+          content = `加载首页数据失败${err}`
         }
         wx.showModal({
           title: '提示',
@@ -315,5 +320,9 @@ Page({
     }else {
       return ''
     }
+  },
+  onShow(){
+    //重新加载数据
+    this._loadIndexInfo()
   }
 });

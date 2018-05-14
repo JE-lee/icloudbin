@@ -11,11 +11,13 @@ export function encryptToken(privateKey){
   let time = Math.floor(Date.now() / 1000)
   d[3] = time
   //md5加密
-  let s = md5.hex_md5(d.join(','))
-  s += privateKey.token
+  //let s = md5.hex_md5(d.join(','))
+  //let s = d.join(',')
+  //s += privateKey.token
   
   //sha1 加密
-  s = sha1(s)
+  //s = sha1(s)
+  let s = privateKey.token
   return {
     token: s,
     time,

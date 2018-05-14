@@ -62,7 +62,7 @@ Component({
       let list = this.data.imageList
       let deleteItem = list.splice(index, 1)
       this.setData({ imageList: list})
-      this.triggerEvent('delete',{url:deleteItem.url})
+      this.triggerEvent('delete',{url:deleteItem[0].url})
     }
   }
 })

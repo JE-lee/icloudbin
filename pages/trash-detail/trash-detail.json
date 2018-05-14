@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "云筒",
+  "navigationBarTitleText": "珠海云筒",
   "usingComponents": {
     "detail-item": "./components/detail-item/detail-item",
     "progress": "./components/progress/progress"

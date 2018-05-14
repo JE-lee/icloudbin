@@ -40,6 +40,11 @@
   padding: 20rpx 0;
   border-bottom: 1rpx solid #999;
 }
+.body-item .trash-icon{
+  width: 47rpx;
+  height: 47rpx;
+  margin-right: 14rpx;
+}
 .body-item .trash-name{
   flex: 1;
 }

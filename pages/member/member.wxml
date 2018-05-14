@@ -14,6 +14,7 @@
           <view class="item-name" slot="name">垃圾桶列表</view>
           <view class="trash-list" slot="content">
             <view class="trash-item" wx:for="{{trashList}}" wx:key="{{index}}" data-index="{{index}}" bindtap="trashItemTap">
+              <image class="trash-icon" src="{{item.trashIcon}}"></image>
               <view class="trash-name">{{item.name}}</view>
               <view class="trash-persent">{{item.persent}}%</view>
               <image class="trash-status-img" src="{{item.all_status == 1 ? './images/btn_zc.png' : (item.all_status == 0 ? './images/btn_gz.png' : './images/btn_qz.png')}}"></image>

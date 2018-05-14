@@ -25,6 +25,11 @@ function post(url, data) {
             } else if(res.data.code == config.INVALID_TOKEN){
               //重新获取token
               reject(1) 
+            } else if(res.data.code == config.NO_INVITE_CODE){
+              //需要邀请
+              reject()
+              wx.redirectTo({ url: `/pages/login/login` });
+              return 
             }else {
               reject(res.data.msg);
             }
@@ -72,6 +77,11 @@ function upload(url, path, name, formData) {
               resolve(r);
             } else if(+r.code == config.INVALID_TOKEN){
               reject(1)
+            }else if(+r.code == config.NO_INVITE_CODE){
+               //需要邀请
+               reject()
+               wx.redirectTo({ url: `/pages/login/login` });
+               return
             }else {
               reject(r.msg);
             }

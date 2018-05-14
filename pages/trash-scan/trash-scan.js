@@ -73,9 +73,9 @@ Page({
     })
   },
   sure(e){
-    let { trash, imageList, deductItem} = this.data ,
+    let { trash, imageList, deductItem} = this.data,
       data = {
-        uid: trash.result.uid,
+        recycle_uid: trash.result.uid,
         recycle_rule_uid: deductItem.uid,
         trash_sn: trash.result.trash_sn,
         image: imageList.join(',')
@@ -86,7 +86,10 @@ Page({
           title: '提交成功',
           icon: 'success'
         })
-        wx.navigateBack()
+        /*
+        setTimeout(() => {
+          wx.navigateBack()
+        },850)*/
       }).catch(err => {
         wx.showModal({
           title: '入站',
