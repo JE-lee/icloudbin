@@ -139,7 +139,7 @@ function getToken(reset =  false) {
             nickname: res[1].nickName,
             sex: res[1].gender,
             headimgurl: res[1].avatarUrl,
-            language: 'zh_CN'
+            language: res[1].language
           };
         wx.request({
           url,
