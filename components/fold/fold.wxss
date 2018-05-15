@@ -1,20 +1,45 @@
-.fold{
-  background-color:#fff;
-}
-.point{
+/* components/fold/fold.wxss */
+.fold-point{
   display: flex;
   align-items: center;
-  padding-bottom: 40rpx;
-  border-bottom: 1rpx solid #999;
+  justify-content: center;
+  border-bottom: 1rpx solid #d6d6d6;
 }
-.point.unfold{
-  border-bottom: none;
-}
-.point .name{
+.fold-point .point{
   flex: 1;
 }
+.fold-arrow{
+   transition: transform .2s;
+   margin-left: 20rpx;
+}
+.fold-point .arrow-rotate{
+  margin-left: 20rpx;
+  transform: rotateZ(90deg) translate(3px,6px);
+  transition: transform .2s;
 
-.point .arrow{
-  width: 28rpx;
-  height: 32rpx;
+}
+.fold-point .arrow{
+  height: 6px;
+  width: 6px;
+  border-width: 2px 2px 0 0;
+  border-color: #C8C8CD;
+  border-style: solid;
+  -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+        transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  margin-right: 20rpx;
+}
+
+/*内容区*/
+.fold .content{
+  overflow: hidden;
+}
+.fold .content-con{
+  transition: transform 0.2s, height 0.1s;
+  transform: translate(0, -100%);
+  height: 0;
+}
+.fold .content_down{
+  transition: transform 0.2s;
+  transform: translate(0, 0);
+  height: 100%;
 }

@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "珠海云筒",
   "usingComponents": {
-    "fold": "/components/fold/fold"
+    "fold": "./components/fold/fold"
   }
 }

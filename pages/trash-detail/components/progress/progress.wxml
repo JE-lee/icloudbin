@@ -7,5 +7,5 @@
   }
 </wxs>
 <view class="progress">
-  <view class="front" style="width:{{progress.getProgressWidth(persent)}}rpx"></view>
+  <view class="front" style="width:{{width}}rpx"></view>
 </view>

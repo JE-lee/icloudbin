@@ -47,6 +47,7 @@ Page({
               key,
               value: item[key],
               type : this.getStatusType(key),
+              show: item[key] != '00'
             })
           }
           return _list

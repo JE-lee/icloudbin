@@ -23,21 +23,27 @@
     
       <!--传感器状态-->
       <view class="body-item" wx:for="{{trashDetail.status}}" wx:key="{{index}}">
-        <view class="body-item-title">传感器状态({{item[0].value}})</view>
-        <block wx:for="{{trashDetail.status[0]}}" wx:if="{{item.show && index > 1}}" wx:key="{{index}}">
-          <detail-item label="{{item.type}}" value="{{item.type_value}}" ></detail-item>
-        </block>
-        
+        <fold isFirstFold="{{!(index == 0)}}">
+          <view class="body-item-title" slot="point">传感器状态({{item[0].value}})</view>
+          <view slot="content" class="item-content">
+            <detail-item label="{{item.type}}" value="{{item.type_value}}" wx:for="{{trashDetail.status[0]}}" wx:if="{{item.show && index > 1}}" wx:key="{{index}}"></detail-item>
+          </view>
+        </fold>
       </view>
     
       <!--传感器数据统计-->
       <block wx:for="{{trashDetail.count_list}}" wx:key="{{index}}">
         <view class="body-item" >
-          <view class="body-item-title">传感器数据统计</view>
-            <detail-item label="{{total.type}}" value="{{total.value}}" wx:for="{{item}}" wx:for-item="total"></detail-item>
-          </view>
+          <fold>
+            <view class="body-item-title" slot="point">传感器数据统计({{item[0].value}})</view>
+            <view class="item-content" slot="content">
+              <detail-item label="{{total.type}}" value="{{total.value}}" wx:for="{{item}}" wx:for-item="total" wx:for-index="idx" wx:if="{{total.show && idx > 1}}"></detail-item>
+            </view>
+          </fold>
+          
+          
+        </view>
       </block>
-      
   </view>
 
   <view wx:else class="message">
@@ -49,5 +55,7 @@
     </block>
     
   </view>
+
+  
   
 </view>

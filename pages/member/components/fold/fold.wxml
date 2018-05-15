@@ -1,0 +1,12 @@
+<!--components/fold/fold.wxml-->
+<view class="fold">
+  <view class="point {{isFold ? '' : 'unfold'}}" catchtap="pointTap">
+    <slot name="icon"></slot>
+    <view class="name"><slot name="name"></slot></view>
+    <image class="arrow" src="{{isFold ? './images/jinyibu.png' : './images/jinyibu-xia.png'}}"></image>
+  </view>
+  <view class="content" hidden="{{isFold}}">
+    <slot name="content"></slot>
+  </view>
+  
+</view>
