@@ -86,10 +86,10 @@ Page({
           title: '提交成功',
           icon: 'success'
         })
-        /*
         setTimeout(() => {
           wx.navigateBack()
-        },850)*/
+        },850)
+        
       }).catch(err => {
         wx.showModal({
           title: '入站',

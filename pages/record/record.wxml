@@ -1,0 +1,36 @@
+<view class="page">
+  <view class="tab">
+    <view class="tab-point" catchtap="showTab">
+      <text >全部</text>
+      <image class="tab-img" src="{{tabShow ? './images/up.png' : './images/down.png'}}"></image>
+    </view>
+    <view class="tab-content" hidden="{{!tabShow}}">
+      <view class="mask"></view>
+      <view class="tab-list">
+        <view class="tab-item {{activeIndex == index ? 'active' : ''}}" wx:for="{{tabList}}" 
+        wx:key="{{index}}" data-index="{{index}}" catchtap="tabItemTab">{{item.name}}</view>
+      </view>
+      
+    </view>
+  </view>
+
+  <!--内容-->
+  <view class="record">
+    <view class="record-item" wx:for="{{recordList}}" data-qurcode = "{{item.qrcode}}" catchtap="gotoDeduct">
+      <view class="title">
+        <view class="name">{{item.name}}</view>
+        <view class="time">{{item.time}}</view>
+      </view>
+      <view class="item-content">
+        <view class="cell">
+          <view class="label">编号：</view>
+          <view class="value">{{item.uidstr}}</view>
+        </view>
+        <view class="cell">
+            <view class="label">重量：</view>
+            <view class="value">{{item.weigh}}kg</view>
+          </view>
+      </view>
+    </view>
+  </view>
+</view>

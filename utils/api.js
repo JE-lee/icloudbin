@@ -98,7 +98,7 @@ function upload(url, path, name, formData) {
         retryCount ++ 
         return _upload(true)
       }else{
-        return Promise.reject(`upload getToken 失败 ${err}`)
+        return Promise.reject(`upload getToken 失败`)
       }
     })
   }
@@ -252,6 +252,11 @@ function getTrashHistoryMsg(sn){
   let url = `${config.host}/api/recycle/message`
   return post(url,{ sn })
 }
+/**垃圾桶投放记录 */
+function getTrashRecord({sn, sort}){
+  let url = `${config.host}/api/recycle/unusual`
+  return post(url, {sn, sort})
+}
 
 export default {
   getTrashDataFromQurcode,
@@ -262,5 +267,6 @@ export default {
   vefiryToken,
   getIndexInfo,
   getTrashDetail,
-  getTrashHistoryMsg
+  getTrashHistoryMsg,
+  getTrashRecord
 };

@@ -64,7 +64,7 @@ Page({
         if(/ASK_FOR_ATTEMTION/.test(err)){
           content = '您还不是管理人员'
         }else{
-          content = `加载首页数据失败${err}`
+          content = `加载首页数据失败`
         }
         wx.showModal({
           title: '提示',
@@ -171,7 +171,8 @@ Page({
           let sn = this._isHasSN(res.result)
           if(sn){
             //跳转到详情页面
-            this.$route(`/pages/trash-detail/trash-detail?sn=${sn}`)
+           // this.$route(`/pages/trash-detail/trash-detail?sn=${sn}`)
+           this.$route(`/pages/record/record?sn=${sn}`)
           }else{
             this._getTrashDataFromQurcode(res.result)
           }
@@ -192,19 +193,19 @@ Page({
   },
   _getTrashDataFromQurcode(code){
     api.getTrashDataFromQurcode(code)
-            .then(res => {
-              console.log("trash data", res);
-              let key = "scanTrashQurcode";
-              wxex.set(key, res);
-              this.$route(`/pages/trash-scan/trash-scan?wxex=${key}`);
-            })
-            .catch(err => {
-              wx.showModal({
-                title: "扫描二维码",
-                content: err,
-                showCancel: false
-              });
-            });
+      .then(res => {
+        console.log("trash data", res);
+        let key = "scanTrashQurcode";
+        wxex.set(key, res);
+        this.$route(`/pages/trash-scan/trash-scan?wxex=${key}`);
+      })
+      .catch(err => {
+        wx.showModal({
+          title: "扫描二维码",
+          content: err,
+          showCancel: false
+        });
+      });
   },
   gotoTrashDetail(e) {
     let { trashList,trashIndex } = this.data,
