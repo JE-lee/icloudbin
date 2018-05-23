@@ -6,7 +6,7 @@ function getUserInfo() {
       lang: 'zh_CN',
       success: ({ userInfo }) => {
         userInfo.nickName = userInfo.nickName || 'null'
-        if(userInfo.gender !=0 && userInfo.gender != 1) userInfo.gender = 'null'
+        if(userInfo.gender !=1 && userInfo.gender != 2) userInfo.gender = 'null'
         userInfo.avatarUrl = userInfo.avatarUrl || 'null'
         wxex.set('user.userInfo',userInfo)
         resolve(userInfo);

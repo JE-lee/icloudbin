@@ -13,7 +13,7 @@ Page({
       .catch(err => {
         wx.showModal({
           title: "邀请登录",
-          content: err,
+          content: JSON.stringify(err) || '邀请接口失败',
           showCancel: false
         });
       });

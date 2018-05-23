@@ -54,7 +54,7 @@ Page({
         
         this.setData({ 
           trashList: res.trash_list,
-          user_info: res.user_info
+          user_info: res.user_info  || {}
         })
         //标记垃圾桶位置
         this._mark(res.trash_list)
