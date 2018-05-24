@@ -61,15 +61,27 @@ Page({
 
       }).catch(err => {
         let content = ''
-        if(/ASK_FOR_ATTEMTION/.test(err)){
+        let redirect = false
+       
+        err = JSON.parse(err)
+        
+        if(/ASK_FOR_LOGIN/.test(err.type)){
           content = '您还不是管理人员'
+        }else if(/ASK_FOR_ATTEMTION/.test(err.type)){
+          content = err.msg
+          redirect = true
         }else{
           content = `加载首页数据失败`
         }
         wx.showModal({
           title: '提示',
           content,
-          showCancel: false
+          showCancel: false,
+          success: function(){
+            if(redirect){
+              wx.redirectTo({ url: `/pages/login/login` });
+            }
+          }
         })
       })
   },

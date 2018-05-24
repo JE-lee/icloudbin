@@ -152,20 +152,16 @@ function getToken(reset =  false) {
               resolve(encryptToken(privateKey))
             } else {
               let msg = res.data.msg
-             
               if (res.data.code == config.NO_INVITE_CODE) {
                 // 没有注册邀请码
-                reject('ASK_FOR_ATTEMTION')
+                reject(JSON.stringify({ type: 'ASK_FOR_LOGIN'}))
                 wx.redirectTo({ url: `/pages/login/login` });
                 return 
                 
               } else if (res.data.code == config.ASK_FOR_ATTEMTION) {
                 //要求关注公众号
-                wx.showModal({
-                  title: "关注",
-                  content: "请先关注云筒科技公众号",
-                  showCancel: false
-                });
+                reject(JSON.stringify({type: 'ASK_FOR_ATTEMTION',msg: res.data.msg}))
+                return  
               }
               reject(msg);
             }
