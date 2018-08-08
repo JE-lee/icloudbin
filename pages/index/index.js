@@ -147,6 +147,7 @@ Page({
   },
   onReady(e) {
     this.map = wx.createMapContext("map");
+    this.$ready = true
   },
 
   popupMaskTap(e) {
@@ -336,6 +337,7 @@ Page({
   },
   onShow(){
     //重新加载数据
-    this._loadIndexInfo()
+    if(this.$ready)
+      this._loadIndexInfo()
   }
 });
