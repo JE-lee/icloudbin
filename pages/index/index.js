@@ -59,7 +59,7 @@ Page({
         //标记垃圾桶位置
         this._mark(res.trash_list)
 
-      }).catch(err => {
+      }).catch(err => {  
         let content = ''
         let redirect = false
        

@@ -9,7 +9,7 @@
   <view class="body">
     <view class="body-list">
       <view class="body-item">
-        <fold>
+        <fold fold="{{ false }}">
           <image class="item-img" slot="icon" src="./images/ljt.png"></image>
           <view class="item-name" slot="name">垃圾桶列表</view>
           <view class="trash-list" slot="content">
@@ -22,7 +22,7 @@
           </view>
         </fold>
       </view>
-
+      <!--
       <view class="body-item">
         <fold>
           <image class="item-img" slot="icon" src="./images/tjsj.png"></image>
@@ -31,7 +31,7 @@
           </view>
         </fold>
       </view>
-
+    -->
     </view>
   </view>
 </view>

@@ -7,7 +7,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    fold: {
+      type: Boolean,
+      value: false
+    }
   },
 
   /**
@@ -15,6 +18,11 @@ Component({
    */
   data: {
     isFold: true
+  },
+  ready(){
+    this.setData({
+      isFold: this.properties.fold
+    })
   },
 
   /**
