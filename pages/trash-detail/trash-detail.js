@@ -57,7 +57,7 @@ Page({
         let name = this.data.name
         wx.showModal({
           title: name,
-          content: `获取${name}的详细信息失败`,
+          content: `Failed to get details of ${name}`,
           showCancel: false
         })
       })
@@ -66,7 +66,6 @@ Page({
   loadTrashHistoryMsg(sn){
     api.getTrashHistoryMsg(sn)
       .then(res => {
-        console.log('res',res)
         let list = res.message_list
         list = list.map(item => {
           item = item.map(i => {
@@ -79,8 +78,8 @@ Page({
         this.setData({ historyMsg: list })
       }).catch(err => {
         wx.showModal({
-          title: '获取数据',
-          content: '获取垃圾桶的历史消息失败',
+          title: 'fetching data',
+          content: 'Failed to get the history of the trash can',
           showCancel: false
         })
       })
@@ -109,51 +108,51 @@ Page({
   getStatusType: function(str){
     switch(str){
       case 'door_hall':
-      return '前门传感器'
+      return 'fd'
     case 'door_hall2':
-      return '前门2传感器'
+      return 'fd II'
     case 'up_door_hall':
-      return '顶盖传感器'
+      return 'top cap'
     case 'code_hall':
-      return '码盘传感器状态'
+      return 'code disk'
       case 'atd_hall':
-      return '投放口传感器'
+      return 'entrance'
       case 'atd_motor':
-      return '投放口电机状态'
+      return 'motor in entrance'
       case 'comp_motor_reset_hall':
-      return '压缩锤复位状态'
+      return 'hammer reset'
       case 'ir_high':
-      return '高度红外对射状态'
+      return 'infrared'
       case 'uvlamp':
-      return '紫外灯状态'
+      return 'UV lamp'
       case 'adb_ox':
-      return '广告灯箱状态'
+      return 'ad lamp box'
 
       case 'shake':
-      return '连续震动标志'
+      return 'shake'
       case 'smoke':
-      return '烟雾报警状态'
+      return 'smoke'
       case 'atd_ir':
-      return '投放口红外接收状态'
+      return 'infrared in entrance'
       case 'battery_voltage':
-      return '电池电压'
+      return 'battery voltage'
       case 'temperature':
-      return '箱体温度（主板箱体)'
+      return 'temperature'
       case 'printer_states':
-      return '打印机状态'
+      return 'printer states'
       case 'printer_count':
-      return '打印机次数'
+      return 'printer count'
       case 'comp_times':
-      return '压缩锤压缩的次数(当天)'
+      return 'comp times'
       case 'atd_open_times':
-      return '投放口打开次数(当天)'
+      return 'open times'
       default:
-      return '无'
+      return 'none'
     }
     
   },
   getStatusValue(str, v){
-    let s = (v == 0) ? '异常' : ((v == 1) ? '正常' : '隐藏')
+    let s = (v == 0) ? 'error' : ((v == 1) ? 'normal' : 'hide')
     if( str == 'temperature'){
       return v + '℃'
     }else if(str == 'battery_voltage'){
@@ -161,35 +160,5 @@ Page({
     }else {
       return s 
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {},
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {},
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {},
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {},
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {}
+  }
 });

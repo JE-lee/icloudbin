@@ -66,15 +66,17 @@ Page({
         err = JSON.parse(err)
         
         if(/ASK_FOR_LOGIN/.test(err.type)){
-          content = '您还不是管理人员'
+          //content = '您还不是管理人员'
+          content = 'You are not an administrator yet'
         }else if(/ASK_FOR_ATTEMTION/.test(err.type)){
           content = err.msg
           redirect = true
         }else{
-          content = `加载首页数据失败`
+          //content = `加载首页数据失败`
+          content = 'Failed to load the home page data'
         }
         wx.showModal({
-          title: '提示',
+          title: 'Tips',
           content,
           showCancel: false,
           success: function(){
@@ -107,11 +109,11 @@ Page({
       }else{
         //获取失败
         wx.showModal({
-          title: '获取位置',
-          content: '获取您的当前位置失败,请稍后重新再试。',
+          title: 'obtain position',
+          content: 'Failed to get your current location, please try again later.',
           showCancel: false
         })
-        return Promise.reject('获取当前位置失败，可能是网络原因')
+        return Promise.reject('Failure to get the current location, it may be a network error')
       }
     })
   },
@@ -119,24 +121,24 @@ Page({
   _requestPermission() {
     return new Promise((resolve,reject) => {
       wx.showModal({
-        title: "获取用户位置",
-        content: "云筒需要获取你的位置才能正常使用",
+        title: "Get user location",
+        content: "i-cloud needs to get your location to work properly",
         success: ({ confirm, cancel }) => {
           if (confirm) {
             wx.openSetting({
               success: ({authSetting}) => {
                 if(authSetting['scope.userLocation']){
-                  resolve('用户在权限设置界面授予了位置权限')
+                  resolve('The user grants location permissions in the permission setting interface')
                 }else{
-                  reject('用户在权限设置界面没有授予位置权限')
+                  reject('The user grants location permissions in the permission setting interface')
                 }
               },
               fail: () => {
-                reject('用户在权限设置页面没有设置成功')
+                reject('limited authority')
               }
             });
           }else{
-            reject('用户拒绝获取位置信息2')
+            reject('The user refuses to get location information')
           }
         },
         fail: () => {
@@ -161,7 +163,7 @@ Page({
     this.$route( `/pages/member/member?wxex=trash`);
   },
   dingweiTap(e){
-    wx.showLoading({ title: '正在定位... '})
+    wx.showLoading({ title: 'locating... '})
     // 所有路线都消失
     this.setData({ polyline: []})
     this._initCurrentPosition().then(() => {
@@ -214,7 +216,7 @@ Page({
       })
       .catch(err => {
         wx.showModal({
-          title: "扫描二维码",
+          title: "scan QR code",
           content: err,
           showCancel: false
         });
@@ -276,8 +278,8 @@ Page({
       this.includePoints([origin, destination]);
     }).catch(err => {
       wx.showModal({
-        title: '规划路径',
-        content: '规划路径超时,你可以稍后再重试',
+        title: 'path planning',
+        content: 'Timeout for planing path , you can try again later',
         showCancel: false
       })
     })

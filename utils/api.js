@@ -11,7 +11,7 @@ function post(url, data) {
   let _post = function(reset){
     return getToken(reset).then(token => {
       return new Promise((resolve, reject) => {
-        let d = Object.assign({}, data, token);
+        let d = Object.assign({}, data, token, {lang: config.VERSION == 'ENG' ? 'en-us' : 'zh-cn'});
         wx.request({
           url,
           data: d,
@@ -98,7 +98,7 @@ function upload(url, path, name, formData) {
         retryCount ++ 
         return _upload(true)
       }else{
-        return Promise.reject(`upload getToken 失败`)
+        return Promise.reject(`upload getToken fail`)
       }
     })
   }
@@ -139,7 +139,8 @@ function getToken(reset =  false) {
             nickname: res[1].nickName,
             sex: res[1].gender,
             headimgurl: res[1].avatarUrl,
-            language: res[1].language
+            language: res[1].language,
+            lang: 'en_us'
           };
         wx.request({
           url,
@@ -188,7 +189,8 @@ function inviteLogin(inviteCode) {
           method: "POST",
           data: {
             code,
-            invite_code: inviteCode
+            invite_code: inviteCode,
+            lang: 'en_us'
           },
           success: res => {
             if (res.data.code == config.ERR_OK) {

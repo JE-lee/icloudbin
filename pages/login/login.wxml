@@ -2,8 +2,8 @@
 <form class="page" bindsubmit="login">
   <image src="./images/ytlogo.png"  class="logo"></image>
   <view class="invicode-label__wrapper">
-    <view class="invicode-label">请输入邀请码</view>
+    <view class="invicode-label">Please enter the invitation code</view>
   </view>
   <input type="text" class="invicode-input" name="inviteCode"></input>
-  <button class="loginfix" form-type="submit" >登录</button>
+  <button class="loginfix" form-type="submit" >login</button>
 </form>

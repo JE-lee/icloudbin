@@ -12,8 +12,8 @@ Page({
       })
       .catch(err => {
         wx.showModal({
-          title: "邀请登录",
-          content: JSON.stringify(err) || '邀请接口失败',
+          title: "invite",
+          content: JSON.stringify(err) || 'invite error',
           showCancel: false
         });
       });

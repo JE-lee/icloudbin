@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "珠海云筒",
+  "navigationBarTitleText": "i-cloud",
   "usingComponents": {
     "detail-item": "./components/detail-item/detail-item",
     "progress": "./components/progress/progress",

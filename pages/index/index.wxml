@@ -82,7 +82,7 @@
           <cover-view class="title">{{trashList[trashIndex].name}}</cover-view>
           <cover-view class="body">
             <cover-view class="status">
-              <cover-view>运行状态</cover-view>
+              <cover-view>status</cover-view>
               <cover-image class="status-img" src="{{trashList[trashIndex].all_status == 1 ? './images/btn_zc.png' : (trashList[trashIndex].all_status == 0 ? './images/btn_gz.png' : './images/btn_qz.png')}}"></cover-image>
             </cover-view>
             
@@ -92,7 +92,7 @@
               <cover-view class="trash-item" wx:for="{{trashList[trashIndex].sort_list}}" wx:if="{{index < 2}}" wx:key="{{index}}">
                 <cover-image class="item-image" src="{{trashType.getTypeImg(item.sort_name)}}"></cover-image>
                 <cover-view class="right">
-                  <cover-view class="text">{{item.sort_name}}</cover-view>
+                  <cover-view class="text">{{item.name_en}}</cover-view>
                   <cover-view class="item-porgress">
                     <cover-view class="front" style="width:{{trashType.getProgressWidth(item.trash_high)}}"></cover-view>
                   </cover-view>
@@ -104,7 +104,7 @@
 
             <!--最新消息-->
             <cover-view class="news">
-              <cover-view>最新消息:</cover-view>
+              <cover-view>news:</cover-view>
               <cover-view class="news-detail" wx:if="{{trashList[trashIndex].list_message.length > 0}}">
                 <cover-view class="dot"></cover-view>
                 <cover-view class="text">{{trashList[trashIndex].list_message[0].message}}</cover-view>
@@ -114,8 +114,8 @@
 
             <!--按钮区域-->
             <cover-view class="control">
-              <cover-view class="control-btn btn-route" bindtap="pathTap">路线</cover-view>
-              <cover-view class="control-btn " bindtap="gotoTrashDetail">更多</cover-view>
+              <cover-view class="control-btn btn-route" bindtap="pathTap">route</cover-view>
+              <cover-view class="control-btn " bindtap="gotoTrashDetail">more</cover-view>
             </cover-view>
            
             

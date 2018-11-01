@@ -11,8 +11,8 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.1",
-	"appid": "wx64024903cfb0415d",
+	"libVersion": "1.9.9",
+	"appid": "wx1c9a5fa279798b5e",
 	"projectname": "icloudbin",
 	"isGameTourist": false,
 	"condition": {

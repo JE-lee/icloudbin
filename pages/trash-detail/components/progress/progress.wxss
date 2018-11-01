@@ -2,7 +2,7 @@
 .progress{
   background-color:#e7e7e7;
   position: relative;
-  width: 520rpx;
+  width: 420rpx;
   height: 14rpx;
   border-radius: 12rpx;
 }

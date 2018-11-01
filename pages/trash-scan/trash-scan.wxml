@@ -1,27 +1,27 @@
 <!--pages/trash-scan/trash-scan.wxml-->
 <view class="page">
   <view class="cell">
-    <view class="label">编号</view>
+    <view class="label">Number</view>
     <view class="value">{{trash.result.trash_sn}}</view>
   </view>
 
   <view class="cell">
-    <view class="label">时间</view>
+    <view class="label">Time</view>
     <view class="value">{{trash.result.createtime}}</view>
   </view>
 
   <view class="cell">
-    <view class="label">重量</view>
+    <view class="label">Weight</view>
     <view class="value">{{trash.result.weigh}}kg</view>
   </view>
 
   <view class="cell">
-    <view class="label">分类</view>
-    <view class="value">{{trash.result.name}}</view>
+    <view class="label">Classification</view>
+    <view class="value">{{trash.result.name_en}}</view>
   </view>
 
   <view class="cell">
-    <view class="label">扣分</view>
+    <view class="label">deductiong</view>
     <view class="value" bindtap="deductTap">{{deductItem.reason}} {{deductItem.score}}分</view>
     <image class="cell-arrow" src="./images/jinyibu.png"></image>
   </view>
@@ -29,7 +29,7 @@
   <!--上传图片-->
   <view wx:if="{{deductItem.score < 0 }}">
     <view class="cell  cell-noborder">
-      <view class="label">上传图片</view>
+      <view class="label">upload image</view>
     </view>
     <upload-iamge bindupload="uploadImage" reset="{{isReScan}}" binddelete="deleteImage"></upload-iamge>
   </view>
@@ -37,7 +37,7 @@
 
   <!--按钮区域-->
   <view class="controls">
-    <view class="btn btn-saomiao" bindtap="reScan">重新扫描</view>
-    <view class="btn btn-sure" bindtap="sure">确认提交</view>
+    <view class="btn btn-saomiao" bindtap="reScan">rescan</view>
+    <view class="btn btn-sure" bindtap="sure">sumbit</view>
   </view>
 </view>

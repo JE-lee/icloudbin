@@ -2,20 +2,20 @@
 
 <view class="page">
   <view class="tab">
-    <view class="tab-item {{activeIndex ==0 ? 'active' : ''}}" bindtap="tabItemTap" data-index="{{0}}">信息</view>
-    <view class="tab-item {{activeIndex ==1 ? 'active' : ''}}" bindtap ="tabItemTap" data-index="{{1}}">历史消息</view>
+    <view class="tab-item {{activeIndex ==0 ? 'active' : ''}}" bindtap="tabItemTap" data-index="{{0}}">info</view>
+    <view class="tab-item {{activeIndex ==1 ? 'active' : ''}}" bindtap ="tabItemTap" data-index="{{1}}">message history</view>
   </view>
 
   <view wx:if="{{activeIndex ==0}}">
     <view class="trash-overview body-item">
-        <detail-item label="垃圾桶编号" value="{{trashDetail.sn}}" fontSize="34" ></detail-item>
-        <detail-item label="垃圾桶名称" value="{{trashDetail.name}}" fontSize="34"></detail-item>
+        <detail-item label="Number" value="{{trashDetail.sn}}" fontSize="34" ></detail-item>
+        <detail-item label="Name" value="{{trashDetail.name}}" fontSize="34"></detail-item>
       </view>
       <!--垃圾桶分类信息-->
       <view class="body-item">
-        <view class="body-item-title">垃圾桶分类信息</view>
+        <view class="body-item-title">classification information</view>
         <view class="trash-info-item" wx:for="{{trashDetail.trash_high}}" wx:key="{{index}}">
-          <view class="trash-info-type">{{item.sort_name}}</view>
+          <view class="trash-info-type">{{item.name_en}}</view>
           <progress persent="{{item.trash_high / 100}}"></progress>
           <view class="trash-info-persent">{{item.trash_high}}%</view>
         </view>
@@ -24,7 +24,7 @@
       <!--传感器状态-->
       <view class="body-item" wx:for="{{trashDetail.status}}" wx:key="{{index}}">
         <fold isFirstFold="{{!(index == 0)}}">
-          <view class="body-item-title" slot="point">传感器状态({{item[0].value}})</view>
+          <view class="body-item-title" slot="point">sensor status of ({{item[1].value}})</view>
           <view slot="content" class="item-content">
             <detail-item label="{{item.type}}" value="{{item.type_value}}" wx:for="{{trashDetail.status[0]}}" wx:if="{{item.show && index > 1}}" wx:key="{{index}}"></detail-item>
           </view>
@@ -35,7 +35,7 @@
       <block wx:for="{{trashDetail.count_list}}" wx:key="{{index}}">
         <view class="body-item" >
           <fold>
-            <view class="body-item-title" slot="point">传感器数据统计({{item[0].value}})</view>
+            <view class="body-item-title" slot="point">Sensor data statistics({{item[1].value}})</view>
             <view class="item-content" slot="content">
               <detail-item label="{{total.type}}" value="{{total.value}}" wx:for="{{item}}" wx:for-item="total" wx:for-index="idx" wx:if="{{total.show && idx > 1}}"></detail-item>
             </view>

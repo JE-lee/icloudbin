@@ -2,6 +2,6 @@
 <view class="page">
   <view class="cell" wx:key ="{{inex}}" wx:for="{{list}}" bindtap="itemTap" data-item="{{item}}">
     <view class="reason">{{item.reason}}</view>
-    <view class="score">{{(item.score > 0) ? '+' : '' }}{{item.score}}分</view>
+    <view class="score">{{(item.score > 0) ? '+' : '' }}{{item.score}}</view>
   </view>
 </view>

@@ -12,4 +12,6 @@
 }
 .main-button{
   width: 80%;
+  line-height: 1.2;
+  padding: 20rpx 0;
 }

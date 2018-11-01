@@ -25,7 +25,7 @@ Component({
    */
   methods: {
     getProgressWidth: function (persent) {
-      return Math.floor(540 * persent)
+      return Math.floor(420 * persent)
     }
   }
 })

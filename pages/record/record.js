@@ -56,14 +56,14 @@ Page({
       })
 
       let tabList = res.sort_name
-      tabList.unshift({name: '全部'})
+      tabList.unshift({name: 'All'})
       this.setData({
         tabList: res.sort_name,
         recordList: list
       })
     }).catch(err => {
       wx.showModal({
-        content: '获取数据失败',
+        content: 'Fetch data failed',
         showCancel: false
       })
     })
@@ -79,7 +79,7 @@ Page({
       .catch(err => {
         debugger
         wx.showModal({
-          content: err || '二维码数据错误',
+          content: err || 'Error in qr code data',
           showCancel: false
         });
       });
@@ -87,54 +87,5 @@ Page({
   gotoDeduct(e){
     let qrcode = e.currentTarget.dataset.qurcode
     this._getTrashDataFromQurcode(qrcode)
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
   }
 })
