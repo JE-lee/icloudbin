@@ -26,7 +26,7 @@
         <fold isFirstFold="{{!(index == 0)}}">
           <view class="body-item-title" slot="point">传感器状态({{item[0].value}})</view>
           <view slot="content" class="item-content">
-            <detail-item label="{{item.type}}" value="{{item.type_value}}" wx:for="{{trashDetail.status[0]}}" wx:if="{{item.show && index > 1}}" wx:key="{{index}}"></detail-item>
+            <detail-item label="{{item.type}}" value="{{item.type_value}}" wx:for="{{ item }}" wx:if="{{item.show && index > 1}}" wx:key="{{index}}"></detail-item>
           </view>
         </fold>
       </view>

@@ -62,7 +62,6 @@ Page({
       }).catch(err => {  
         let content = ''
         let redirect = false
-       
         err = JSON.parse(err)
         
         if(/ASK_FOR_LOGIN/.test(err.type)){
