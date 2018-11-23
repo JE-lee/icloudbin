@@ -107,7 +107,9 @@
               <cover-view>最新消息:</cover-view>
               <cover-view class="news-detail" wx:if="{{trashList[trashIndex].list_message.length > 0}}">
                 <cover-view class="dot"></cover-view>
-                <cover-view class="text">{{trashList[trashIndex].list_message[0].message}}</cover-view>
+                <cover-view class="text">
+                  <cover-view wx:for="{{ trashList[trashIndex].list_message[0].message }}" style="word-break: break-all;white-space: normal;">{{ item }}</cover-view>
+                </cover-view>
                 <cover-view class="time">{{trashList[trashIndex].list_message[0].createtime}}</cover-view>
               </cover-view>
             </cover-view>

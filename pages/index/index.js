@@ -5,7 +5,7 @@ import api from "../../utils/api";
 import wxex from "../../utils/wxex";
 import user from "../../utils/user";
 import {encryptToken} from "../../utils/encrpt-token";
-import { fmtDate } from '../../utils/time'
+import { fmtDateV2 } from '../../utils/time'
 const SIDEBAR_WIDTH = 554;
 Page({
   data: {
@@ -24,7 +24,7 @@ Page({
     // 获取首页数据
     this._loadIndexInfo()
   },
-  _loadIndexInfo(){
+  _loadIndexInfo(include = true){
     api.getIndexInfo()
       .then(res => {
         let l = res.trash_list
@@ -44,7 +44,9 @@ Page({
           //将最新消息里面的时间格式化
           let list = item.list_message
           list = list.map(item => {
-            item.createtime = fmtDate(item.createtime)
+            item.createtime = fmtDateV2(item.createtime * 1000)
+            item.message = item.message.split(',')
+            item.message[2] = '原因:' + item.message[2]
             return item
           })
           item.list_message = list
@@ -56,8 +58,13 @@ Page({
           trashList: res.trash_list,
           user_info: res.user_info  || {}
         })
+        // 
+        this.$emit('index:info', {
+          trashList: res.trash_list,
+          user_info: res.user_info  || {}
+        })
         //标记垃圾桶位置
-        this._mark(res.trash_list)
+        this._mark(res.trash_list, include )
 
       }).catch(err => {  
         let content = ''
@@ -287,7 +294,7 @@ Page({
    * @param {Array} markes
    * @param {Boolean} reset //是否重设
    */
-  _mark(markes, reset = false) {
+  _mark(markes, include = false) {
     let _markes = this.data.positionMarkes || [];
     let m = markes.map(item => {
       // 计算垃圾桶的百分比
@@ -317,7 +324,7 @@ Page({
     this.setData({
       positionMarkes: _markes
     }, ()=> {
-      this.includePoints(this.data.positionMarkes)
+      include && this.includePoints(this.data.positionMarkes)
     });
   },
   /*得到垃圾桶的图标路径 */
@@ -337,6 +344,6 @@ Page({
   onShow(){
     //重新加载数据
     if(this.$ready)
-      this._loadIndexInfo()
+      this._loadIndexInfo(false)
   }
 });

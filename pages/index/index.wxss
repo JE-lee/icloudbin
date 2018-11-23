@@ -158,13 +158,17 @@
   word-wrap: break-word ; 
   white-space: pre-line ;
   flex-wrap: wrap;
-  height: 100rpx;
+  height: 170rpx;
   line-height: 1.8;
+  font-size: 28rpx;
 }
 .news .time{
   color:#999;
   font-size: 24rpx;
-  margin-left: 70rpx;
+  margin-left: 40rpx;
+  width: 136rpx;
+  word-break: break-all ; 
+  white-space: normal;
 }
 
 .popup .control{

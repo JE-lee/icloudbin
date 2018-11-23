@@ -19,6 +19,10 @@ Page({
       user_info = wxex.get(key).user_info
 
     this.setData({ userInfo,trashList,user_info })
+
+    this.$addListener('index:info',({trashList,user_info }) => {
+      this.setData({trashList,user_info })
+    })
     
     
   },

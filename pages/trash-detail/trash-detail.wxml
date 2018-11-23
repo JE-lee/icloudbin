@@ -49,7 +49,9 @@
   <view wx:else class="message">
     <block wx:for="{{historyMsg}}" wx:key="{{key}}">
       <view class="message-item" wx:for="{{item}}" wx:for-item="msg" wx:key="{{index}}">
-        <view class="text">{{msg.message}}</view>
+        <view >
+          <view class="text" wx:for="{{ msg.message }}" wx:key="{{ index }}">{{ item }}</view>
+        </view>
         <view class="time">{{msg.time}}</view>
       </view>
     </block>
