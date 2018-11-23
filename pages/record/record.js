@@ -77,7 +77,6 @@ Page({
         this.$route(`/pages/trash-scan/trash-scan?wxex=${key}`);
       })
       .catch(err => {
-        debugger
         wx.showModal({
           content: err || 'Error in qr code data',
           showCancel: false

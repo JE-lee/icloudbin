@@ -2,9 +2,10 @@
 <form class="page" bindsubmit="login">
   <image src="./images/ytlogo.png"  class="logo"></image>
   <view class="invicode-label__wrapper">
-    <view class="invicode-label">Please enter the invitation code</view>
+    <view class="invicode-label">invitation code</view>
   </view>
   <input type="text" class="invicode-input" name="inviteCode"></input>
   <button class="loginfix" form-type="submit" >login</button>
+  <button class="attem" bindtap="gotoAttem">Authorize cate</button>
   <button type="primary"></button>
 </form>

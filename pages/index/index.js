@@ -68,7 +68,6 @@ Page({
       }).catch(err => {  
         let content = ''
         let redirect = false
-        debugger
         err = JSON.parse(err)
         
         if(/ASK_FOR_LOGIN/.test(err.type)){

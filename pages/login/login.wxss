@@ -31,11 +31,13 @@
 }
 .invicode-label{
   padding: 0 10rpx;
-  width: 208rpx;
+  width: 240rpx;
   position: relative;
   z-index: 1;
   background-color: #fff;
   margin: 0 auto;
+  word-break: keep-all;
+  white-space: nowrap;
 }
 .invicode-input{
   width: 490rpx;
@@ -54,6 +56,12 @@
   bottom: 0;
   line-height: 1.0;
   padding: 30rpx 0;
+  background-color:#58d7c7;
+  color:#fff;
+}
+
+.attem{
+  margin-top: 30rpx;
   background-color:#58d7c7;
   color:#fff;
 }

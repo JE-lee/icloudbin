@@ -17,5 +17,8 @@ Page({
           showCancel: false
         });
       });
+  },
+  gotoAttem(){
+    this.$route('/pages/attem/attem')
   }
 });
