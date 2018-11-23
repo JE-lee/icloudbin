@@ -20,6 +20,9 @@ Page({
 
     this.setData({ userInfo,trashList,user_info })
     
+    this.$addListener('index:info', ({trashList,user_info}) => {
+      this.setData({ trashList,user_info })
+    })
     
   },
   trashItemTap(e){

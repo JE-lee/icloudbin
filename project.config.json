@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -46,6 +46,11 @@
 					"name": "投放记录",
 					"pathName": "pages/record/record",
 					"query": "sn=YT0001"
+				},
+				{
+					"id": -1,
+					"name": "guanghzu ",
+					"pathName": "pages/attem/attem"
 				}
 			]
 		}

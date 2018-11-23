@@ -71,7 +71,7 @@
      bindmarkertap="mapMarkerTap">
       <cover-view class="btn-con">
         <cover-image class="img__dingwei" src="./images/btn_dingwei@2x.png" bindtap="dingweiTap"></cover-image>
-        <cover-image class="img__saoma" src="./images/saoyisao@2x.png" bindtap="saomaTap"></cover-image>
+        <cover-image class="img__saoma" src="./images/saoyisaoen.png" bindtap="saomaTap"></cover-image>
         <cover-image class="img__member" src="./images/btn_cbl@2x.png" bindtap="memberTap"></cover-image>
       </cover-view>
       
@@ -107,7 +107,10 @@
               <cover-view>news:</cover-view>
               <cover-view class="news-detail" wx:if="{{trashList[trashIndex].list_message.length > 0}}">
                 <cover-view class="dot"></cover-view>
-                <cover-view class="text">{{trashList[trashIndex].list_message[0].message}}</cover-view>
+                <cover-view class="text">
+                  <cover-view  wx:for="{{ trashList[trashIndex].list_message[0].message }}" style="word-break: break-all;white-space: normal;">{{ item }}</cover-view>
+                </cover-view>
+                
                 <cover-view class="time">{{trashList[trashIndex].list_message[0].createtime}}</cover-view>
               </cover-view>
             </cover-view>

@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "i-cloud",
+  "navigationBarTitleText": "i-cloudbin",
   "usingComponents": {
     "fold": "./components/fold/fold"
   }

@@ -1,6 +1,6 @@
 // pages/trash-detail/trash-detail.js
 import api from '../../utils/api'
-import { fmtDate } from '../../utils/time';
+import { fmtDateV2 } from '../../utils/time';
 Page({
   /**
    * 页面的初始数据
@@ -69,7 +69,9 @@ Page({
         let list = res.message_list
         list = list.map(item => {
           item = item.map(i => {
-            i.time = fmtDate(i.createtime * 1000)
+            i.time = fmtDateV2(i.createtime * 1000)
+            i.message = i.message.split(',')
+            i.message[2] = '原因：'+ i.message[2]
             return i
           })
           return item

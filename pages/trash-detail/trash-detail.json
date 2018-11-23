@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "i-cloud",
+  "navigationBarTitleText": "i-cloudbin",
   "usingComponents": {
     "detail-item": "./components/detail-item/detail-item",
     "progress": "./components/progress/progress",

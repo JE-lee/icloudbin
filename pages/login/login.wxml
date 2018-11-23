@@ -6,4 +6,5 @@
   </view>
   <input type="text" class="invicode-input" name="inviteCode"></input>
   <button class="loginfix" form-type="submit" >login</button>
+  <button type="primary"></button>
 </form>

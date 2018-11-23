@@ -26,7 +26,7 @@
         <fold isFirstFold="{{!(index == 0)}}">
           <view class="body-item-title" slot="point">sensor status of ({{item[1].value}})</view>
           <view slot="content" class="item-content">
-            <detail-item label="{{item.type}}" value="{{item.type_value}}" wx:for="{{trashDetail.status[0]}}" wx:if="{{item.show && index > 1}}" wx:key="{{index}}"></detail-item>
+            <detail-item label="{{item.type}}" value="{{item.type_value}}" wx:for="{{ item }}" wx:if="{{item.show && index > 1}}" wx:key="{{index}}"></detail-item>
           </view>
         </fold>
       </view>
@@ -49,7 +49,9 @@
   <view wx:else class="message">
     <block wx:for="{{historyMsg}}" wx:key="{{key}}">
       <view class="message-item" wx:for="{{item}}" wx:for-item="msg" wx:key="{{index}}">
-        <view class="text">{{msg.message}}</view>
+        <view >
+          <view class="text" wx:for="{{ msg.message }}">{{ item }}</view>
+        </view>
         <view class="time">{{msg.time}}</view>
       </view>
     </block>
