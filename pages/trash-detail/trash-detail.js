@@ -45,7 +45,7 @@ Page({
           for(let key in item){
             _list.push({
               key,
-              value: item[key],
+              value: this.getCountValue(key, item[key]),
               type : this.getStatusType(key),
               show: item[key] != '00'
             })
@@ -70,8 +70,9 @@ Page({
         list = list.map(item => {
           item = item.map(i => {
             i.time = fmtDateV2(i.createtime * 1000)
-            i.message = i.message.split(',')
-            i.message[2] = '原因：'+ i.message[2]
+            i.message_en = i.message_en || ''
+            i.message = i.message_en.split(',')
+            i.message[2] = 'reason：'+ i.message[2]
             return i
           })
           return item
@@ -148,6 +149,8 @@ Page({
       return 'comp times'
       case 'atd_open_times':
       return 'open times'
+      case 'trash_weight':
+      return 'trash_weight'
       default:
       return 'none'
     }
@@ -159,8 +162,13 @@ Page({
       return v + '℃'
     }else if(str == 'battery_voltage'){
       return v + 'V'
+    }else if(str == 'trash_weight'){
+      return v + 'kg'
     }else {
       return s 
     }
+  },
+  getCountValue(str, v){
+    return str == 'trash_weight' ? `${v}kg` : v
   }
 });
