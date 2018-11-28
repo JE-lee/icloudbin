@@ -45,7 +45,7 @@ Page({
           for(let key in item){
             _list.push({
               key,
-              value: item[key],
+              value: this.getStatusValue(key, item[key]),
               type : this.getStatusType(key),
               show: item[key] != '00'
             })
@@ -149,6 +149,8 @@ Page({
       return '压缩锤压缩的次数(当天)'
       case 'atd_open_times':
       return '投放口打开次数(当天)'
+      case 'trash_weight':
+      return '重量'
       default:
       return '无'
     }
@@ -160,6 +162,8 @@ Page({
       return v + '℃'
     }else if(str == 'battery_voltage'){
       return v + 'V'
+    }else if(str == 'trash_weight'){
+      return v + 'kg'
     }else {
       return s 
     }

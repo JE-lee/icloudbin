@@ -2,7 +2,7 @@
 .content{
   display: flex;
   align-items: center;
-  line-height: 1.0;
+  line-height: 1.2;
   padding-left: 34rpx;
   padding-right: 30rpx;
   margin-top: 30rpx;
