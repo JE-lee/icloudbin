@@ -45,7 +45,7 @@ Page({
           for(let key in item){
             _list.push({
               key,
-              value: this.getStatusValue(key, item[key]),
+              value: this.getCountValue(key, item[key]),
               type : this.getStatusType(key),
               show: item[key] != '00'
             })
@@ -162,11 +162,13 @@ Page({
       return v + '℃'
     }else if(str == 'battery_voltage'){
       return v + 'V'
-    }else if(str == 'trash_weight'){
-      return v + 'kg'
     }else {
       return s 
     }
+  },
+
+  getCountValue(str, v){
+    return str == 'trash_weight' ? `${v}kg` : v
   },
 
   /**
