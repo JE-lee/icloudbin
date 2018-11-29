@@ -68,7 +68,7 @@
   height: 92rpx;
   line-height: 92rpx;
   margin-bottom: 29rpx;
-  background-color: rgb(88,215,199);
+  background-color: #fec62e;
   color: #fff;
   
 }
@@ -127,7 +127,7 @@
   left: 0;
   top: 0;
   height: 100%;
-  background-color:rgb(88,215,199);
+  background-color:#fec62e;
   border-radius: 8rpx;
 }
 
@@ -148,7 +148,7 @@
   width: 8rpx;
   height: 8rpx;
   border-radius: 50%;
-  background-color:rgb(88,215,199);
+  background-color:#fec62e;
   margin-right: 8rpx;
   margin-top: 20rpx;
 }
@@ -189,6 +189,6 @@
 }
 .popup .control .btn-route{
   margin-right: 46rpx;
-  border-color: rgb(88,215,199);
-  color: rgb(88,215,199);
+  border-color: #fec62e;
+  color: #fec62e;
 }

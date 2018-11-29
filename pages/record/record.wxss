@@ -52,8 +52,8 @@
 .tab-item{
   padding: 10rpx 30rpx;
   border-radius: 30rpx;
-  color: #666;
-  border: 1rpx solid #666;
+  color: #fec62e;
+  border: 1rpx solid #fec62e;
   margin-right: 28rpx;
   margin-bottom: 24rpx;
 }

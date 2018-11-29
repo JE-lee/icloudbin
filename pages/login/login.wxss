@@ -8,21 +8,21 @@
   font-size: 34rpx;
 }
 .logo{
-  width: 476rpx;
-  height: 146rpx;
+  width: 288rpx;
+  height: 288rpx;
   margin-top: 160rpx;
 }
 .invicode-label__wrapper{
   position: relative;
   width: 450rpx;
-  color: #58d7c7;
+  color: #fec62e;
   margin-top: 102rpx;
 }
 .invicode-label__wrapper::after{
   content: '';
   display: block;
   width: 100%;
-  border-top: 1rpx solid  #58d7c7;
+  border-top: 1rpx solid  #fec62e;
   position: absolute;
   left: 0;
   top: 50%;
@@ -42,7 +42,7 @@
   height: 88rpx;
   line-height: 88rpx;
   border: 1rpx solid rgb(77,68, 105);
-  color:  #58d7c7;
+  color:  #fec62e;
   border-radius: 12rpx;
   margin-top: 24rpx;
 }
@@ -54,12 +54,12 @@
   bottom: 0;
   line-height: 1.0;
   padding: 30rpx 0;
-  background-color:#58d7c7;
+  background-color:#fec62e;
   color:#fff;
 }
 
 .attem{
   margin-top: 30rpx;
-  background-color:#58d7c7;
+  background-color:#fec62e;
   color:#fff;
 }

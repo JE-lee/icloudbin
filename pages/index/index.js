@@ -336,7 +336,7 @@ Page({
     }else if(residue > 30 && residue <= 90){
       return "./images/btu_ljt-2@3x.png";
     }else if(residue > 90){
-      return "./images/btu_ljt3@2x.png";
+      return "./images/btu_ljt3@3x.png";
     }else {
       return ''
     }
