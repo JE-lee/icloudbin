@@ -44,9 +44,10 @@ Page({
           //将最新消息里面的时间格式化
           let list = item.list_message
           list = list.map(item => {
-            item.createtime = fmtDateV2(item.createtime *100 )
-            item.message = item.message.split(',')
-            item.message[2] = '原因:' + item.message[2]
+            item.createtime = fmtDateV2(item.createtime * 1000 )
+            item.message_en = item.message_en || ''
+            item.message = item.message_en.split(',')
+            item.message[2] = 'reason:' + item.message[2]
             return item
           })
           item.list_message = list
