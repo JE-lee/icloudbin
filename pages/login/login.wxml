@@ -1,10 +1,11 @@
 <!--pages/login/login.wxml-->
-<form class="page" bindsubmit="login">
-  <image src="./images/ytlogo.png"  class="logo"></image>
-  <view class="invicode-label__wrapper">
-    <view class="invicode-label">请输入邀请码</view>
+<form  bindsubmit="login">
+  <view class="page">
+    <image src="./images/ytlogo.png" class="logo"></image>
+    <view class="invicode-label__wrapper">
+      <view class="invicode-label">请输入邀请码</view>
+    </view>
+    <input type="text" class="invicode-input" name="inviteCode"></input>
+    <button class="loginfix" form-type="submit">登录</button>
   </view>
-  <input type="text" class="invicode-input" name="inviteCode"></input>
-  <button class="attem" bindtap="gotoAttem">授权云筒分类</button>
-  <button class="loginfix" form-type="submit" >登录</button>
 </form>

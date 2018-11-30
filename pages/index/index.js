@@ -69,7 +69,12 @@ Page({
       }).catch(err => {  
         let content = ''
         let redirect = false
-        err = JSON.parse(err)
+        try {
+          err = JSON.parse(err)
+        } catch (error) {
+          err = ''
+        }
+        
         
         if(/ASK_FOR_LOGIN/.test(err.type)){
           content = '您还不是管理人员'

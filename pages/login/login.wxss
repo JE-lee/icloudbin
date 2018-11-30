@@ -4,12 +4,11 @@
   flex-direction: column;
   align-items: center;
   background-color: #fff;
-  text-align: center;
   font-size: 34rpx;
 }
 .logo{
-  width: 288rpx;
-  height: 288rpx;
+  width: 338rpx;
+  height: 95rpx;
   margin-top: 160rpx;
 }
 .invicode-label__wrapper{

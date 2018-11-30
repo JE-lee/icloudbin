@@ -8,11 +8,12 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.9.91",
-	"appid": "wx64024903cfb0415d",
+	"appid": "wx012eaabee67674dc",
 	"projectname": "icloudbin",
 	"isGameTourist": false,
 	"condition": {
