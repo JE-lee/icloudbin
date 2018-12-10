@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "珠海云筒",
+  "navigationBarTitleText": "小黄狗厨余回收",
   "usingComponents": {
     "fold": "./components/fold/fold"
   }
