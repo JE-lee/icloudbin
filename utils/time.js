@@ -1,9 +1,9 @@
 export function fmtDate(obj){
   let date = new Date(+obj)
-  return `${date.getUTCFullYear()}/${date.getUTCMonth() + 1}/${date.getUTCDate()}`
+  return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
 }
 
 export function fmtDateV2(obj){
   let date = new Date(+obj)
-  return `${date.getUTCFullYear()}/${date.getUTCMonth() + 1}/${date.getUTCDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+  return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
 }
