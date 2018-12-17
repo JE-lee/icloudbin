@@ -56,7 +56,8 @@ Page({
         
         this.setData({ 
           trashList: res.trash_list,
-          user_info: res.user_info  || {}
+          user_info: res.user_info  || {},
+          loginStatus: res.login_status
         })
         // 
         this.$emit('index:info', {
@@ -195,12 +196,13 @@ Page({
           let sn = this._isHasSN(res.result)
           if(sn){
             //跳转到详情页面
-           // this.$route(`/pages/trash-detail/trash-detail?sn=${sn}`)
-           this.$route(`/pages/record/record?sn=${sn}`)
+            this.$route(`/pages/record/record?sn=${sn}`)
+          }else if(/^http/.test(code)){
+             // 跳转到确认登录页面
+            this.$route(`/pages/device/confirm-login/confirm-login?sn=${code.substr(code.lastIndexOf('/')+1)}`)
           }else{
-            this._getTrashDataFromQurcode(res.result)
+            this._getTrashDataFromQurcode(code)
           }
-          
         }
       }
     });

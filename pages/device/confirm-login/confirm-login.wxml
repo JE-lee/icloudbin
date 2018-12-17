@@ -1,6 +1,6 @@
 <image class="logo" src="/images/logo.png"></image>
 
 <view class="bottom">
-  <button  type="primary">确认登录</button>
-  <button >取消登录</button>
+  <button  type="primary" bindtap="sure">确认登录</button>
+  <button bindtap="cancel">取消登录</button>
 </view>

@@ -1,6 +1,6 @@
-<view class="cell">姓名：<text class="gray">哈哈哈</text></view>
-<view class="cell">手机号码：<text class="gray">13929267754</text></view>
-<view class="cell">当前积分：<text class="gray">88888</text></view>
+<view class="cell">姓名：<text class="gray">{{name}}</text></view>
+<view class="cell">手机号码：<text class="gray">{{phone}}</text></view>
+<view class="cell">当前积分：<text class="gray">{{ score }}</text></view>
 
 <view class="op">
   <button type="primary">加分</button>

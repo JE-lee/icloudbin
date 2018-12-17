@@ -6,17 +6,19 @@ import {encryptToken} from './encrpt-token'
 let privateKey  = null // {token,uid}对象
 
 function post(url, data) {
-  // 先获取token\
+  // 先获取token
   let retryCount = 0
   let _post = function(reset){
     return getToken(reset).then(token => {
       return new Promise((resolve, reject) => {
         let d = Object.assign({}, data, token);
+        wx.showLoading({ title: '加载中', mask: true })
         wx.request({
           url,
           data: d,
           method: "POST",
           success: function(res) {
+            wx.hideLoading()
             if (res.statusCode != 200) {
               reject();
             }
@@ -35,6 +37,45 @@ function post(url, data) {
             }
           },
           fail: function(err) {
+            wx.hideLoading()
+            reject(err);
+          }
+        });
+      });
+    }).catch(err => {
+      if(err === 1 && retryCount < 1 ){
+        retryCount ++ 
+        return _post(true)
+      }else{
+        return Promise.reject(`${err}`)
+      }
+    })
+  }
+  return _post()
+}
+
+
+function post2(url, data) {
+  // 先获取token
+  let retryCount = 0
+  let _post = function(reset){
+    return getToken(reset).then(token => {
+      return new Promise((resolve, reject) => {
+        let d = Object.assign({}, data, token);
+        //wx.showLoading({ title: '加载中', mask: true })
+        wx.request({
+          url,
+          data: d,
+          method: "POST",
+          success: function(res) {
+            //wx.hideLoading()
+            if (res.statusCode != 200) {
+              reject();
+            }
+            resolve(res.data)
+          },
+          fail: function(err) {
+            //wx.hideLoading()
             reject(err);
           }
         });
@@ -173,7 +214,7 @@ function getToken(reset =  false) {
             }
           },
           fail: err => {
-            reject(err);
+            reject(JSON.stringify({ type: 'error'}));
           }
         });
       });
@@ -263,13 +304,13 @@ function getTrashRecord({sn, sort}){
 /* 登录设备 */
 function loginDevice(sn){
   let url = `${config.host}/api/recycle/loginDevice`
-  return post(url, { sn })
+  return post2(url, { sn })
 }
 
 /*是否登录 */
 function isLogin(){
   let url = `${config.host}/api/recycle/isLogin`
-  return post(url)
+  return post2(url)
 }
 
 /* 设备刷卡列表 */
@@ -279,9 +320,9 @@ function cardList(){
 }
 
 /* 刷卡用户详情数据 */
-function cardDetail(){
+function cardDetail(user_uid){
   let url = `${config.host}/api/recycle/cardListDetail`
-  return post(url) 
+  return post(url, { user_uid }) 
 }
 
 /* 加减分 */
@@ -300,5 +341,10 @@ export default {
   getIndexInfo,
   getTrashDetail,
   getTrashHistoryMsg,
-  getTrashRecord
+  getTrashRecord,
+  loginDevice,
+  isLogin,
+  cardList,
+  cardDetail,
+  opScore
 };

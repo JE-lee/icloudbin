@@ -69,6 +69,10 @@
   <view class="mapwrapper" >
     <map id="map" class="map" longitude="{{currentPosition.longitude}}" latitude="{{currentPosition.latitude}}" markers="{{positionMarkes}}" polyline="{{polyline}}"
      bindmarkertap="mapMarkerTap">
+      <!--已经登录设备-->
+      <cover-view class="login-status">
+        <cover-view>{{ loginStatus ? '已登录' : '未登录'}}{{ loginStatus }}</cover-view>
+      </cover-view>
       <cover-view class="btn-con">
         <cover-image class="img__dingwei" src="./images/btn_dingwei@2x.png" bindtap="dingweiTap"></cover-image>
         <cover-image class="img__saoma" src="./images/saoyisao@2x.png" bindtap="saomaTap"></cover-image>
