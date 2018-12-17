@@ -260,6 +260,36 @@ function getTrashRecord({sn, sort}){
   return post(url, {sn, sort})
 }
 
+/* 登录设备 */
+function loginDevice(sn){
+  let url = `${config.host}/api/recycle/loginDevice`
+  return post(url, { sn })
+}
+
+/*是否登录 */
+function isLogin(){
+  let url = `${config.host}/api/recycle/isLogin`
+  return post(url)
+}
+
+/* 设备刷卡列表 */
+function cardList(){
+  let url = `${config.host}/api/recycle/cardList`
+  return post(url) 
+}
+
+/* 刷卡用户详情数据 */
+function cardDetail(){
+  let url = `${config.host}/api/recycle/cardListDetail`
+  return post(url) 
+}
+
+/* 加减分 */
+function opScore({ user_uid, type, score }){
+  let url = `${config.host}/api/recycle/score`
+  return post(url, { user_uid, type, score}) 
+}
+
 export default {
   getTrashDataFromQurcode,
   uploadDeductImage,
