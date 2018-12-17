@@ -1,0 +1,11 @@
+<view class="list">
+  <view class="item" wx:for="[1,2,]">
+    <text>{{ index + 1}}.哈哈哈哈</text>
+    <text class="phone">(13610090533)</text>
+  </view>
+</view>
+
+<view class="fixed-control">
+  <button >退出登录</button>
+  <button type="primary">添加IC卡</button>
+</view>

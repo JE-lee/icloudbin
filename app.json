@@ -8,7 +8,12 @@
     "pages/trash-detail/trash-detail",
     "pages/user-authorize/user-authorize",
     "pages/record/record",
-    "pages/attem/attem"
+    "pages/attem/attem",
+    "pages/device/login/login",
+    "pages/device/confirm-login/confirm-login",
+    "pages/device/list/list",
+    "pages/device/detail/detail",
+    "pages/device/card/card"
   ],
   "window": {
     "backgroundTextStyle": "light",

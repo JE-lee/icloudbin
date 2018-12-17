@@ -1,0 +1,17 @@
+.logo{
+  width: 357rpx;
+  height: 110rpx;
+  display: block;
+  margin: 100rpx auto;
+}
+
+.bottom{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 100rpx;
+  padding: 0 40rpx;
+}
+.bottom button{
+  margin-bottom: 30rpx;
+}

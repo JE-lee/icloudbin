@@ -1,0 +1,3 @@
+<view class="status">已登录CS0001</view>
+<image class="logo" src="/images/logo.png"></image>
+<button class="btn-login" type="primary" bindtap="scanAndLogin">扫一扫</button>

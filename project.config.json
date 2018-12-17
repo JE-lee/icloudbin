@@ -33,30 +33,36 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
-					"name": "详情",
-					"pathName": "pages/trash-detail/trash-detail",
-					"query": "sn=YT0001"
-				},
-				{
-					"id": 1,
-					"name": "投放记录",
-					"pathName": "pages/record/record",
-					"query": "sn=YT0001"
-				},
-				{
-					"id": -1,
-					"name": "2222",
-					"pathName": "pages/attem/attem",
+					"name": "login",
+					"pathName": "pages/device/login/login",
 					"query": ""
 				},
 				{
 					"id": -1,
-					"name": "login",
-					"pathName": "pages/login/login"
+					"name": "confirm-login",
+					"pathName": "pages/device/confirm-login/confirm-login",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "list",
+					"pathName": "pages/device/list/list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "detail",
+					"pathName": "pages/device/detail/detail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "card",
+					"pathName": "pages/device/card/card"
 				}
 			]
 		}

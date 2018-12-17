@@ -1,0 +1,33 @@
+page{
+  font-size: 34rpx;
+  border-top: 1rpx solid #e5e5e5;
+  padding-bottom: 140rpx;
+}
+
+.list{
+  padding: 10rpx 0 10rpx 40rpx;
+}
+
+.item{
+  padding: 10rpx 50rpx 10rpx 10rpx;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.item::after{
+  content: '';
+  display: block;
+  width: 100vw;
+  border-bottom: 1rpx solid #e5e5e5;
+  position: absolute;
+  left: 10rpx;
+  bottom: 0;
+}
+
+.phone{
+  color: #666;
+  font-size: 30rpx;
+}
+

@@ -72,7 +72,13 @@ function upload(url, path, name, formData) {
               wx.hideLoading();
               return;
             }
-            let r = JSON.parse(res.data);
+            let r = {};
+            try {
+              r = JSON.parse(res.data)
+            } catch (error) {
+              
+            }
+
             if (+r.code == config.ERR_OK) {
               resolve(r);
             } else if(+r.code == config.INVALID_TOKEN){

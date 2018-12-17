@@ -1,0 +1,17 @@
+page{
+  font-size: 30rpx;
+}
+
+.gray{
+  color:#888;
+}
+.cell{
+  padding: 10rpx 40rpx;
+  border-top: 1rpx solid #e5e5e5;
+  background-color:#fff;
+}
+
+.op{
+  padding: 0 40rpx;
+  margin-top: 100rpx;
+}

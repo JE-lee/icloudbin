@@ -9,3 +9,25 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+
+.fixed-control{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color:#fff;
+  border-top: 1rpx solid #e5e5e5;
+  height: 130rpx;
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.fixed-control button{
+  flex: 1;
+  margin-right: 30rpx;
+}
+.fixed-control button:nth-last-of-type(1){
+  margin-right: 0;
+}
