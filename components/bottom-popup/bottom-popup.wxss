@@ -1,0 +1,67 @@
+@keyframes orderFormSlideInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes orderFormSlideInUp2 {
+  from {
+    opacity: 0;
+    top: 60%;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+
+
+@keyframes orderFormWrapFadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+.wrapper{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 9999;
+}
+.mask{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  animation-duration: .1s;
+  animation-fill-mode: both;
+  animation-name: orderFormWrapFadeIn;
+}
+.content{
+  position: absolute;
+  animation-duration: .2s;
+  animation-fill-mode: both;
+  
+}
+
+.content.bottom{
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  animation-name: orderFormSlideInUp;
+}
+
+.content.center{
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation-name: orderFormSlideInUp2;
+}

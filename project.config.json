@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -54,15 +54,16 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 3,
 					"name": "detail",
 					"pathName": "pages/device/detail/detail",
-					"query": ""
+					"query": "user_uid=17462629-7362-4e71-aa2f-e7ff2628480&name=哈哈哈&phone=15219306571"
 				},
 				{
 					"id": -1,
 					"name": "card",
-					"pathName": "pages/device/card/card"
+					"pathName": "pages/device/card/card",
+					"query": ""
 				}
 			]
 		}

@@ -1,12 +1,26 @@
 <view class="cell">姓名：<text class="gray">{{name}}</text></view>
 <view class="cell">手机号码：<text class="gray">{{phone}}</text></view>
-<view class="cell">当前积分：<text class="gray">{{ score }}</text></view>
+<view class="cell">当前积分：<text class="gray">{{ total }}</text></view>
 
 <view class="op">
-  <button type="primary">加分</button>
-  <button >减分</button>
+  <button type="primary" bindtap="op" data-type="1">加{{ (type == 1 && score > 0) ? score : ''}}分</button>
+  <button bindtap="op" data-type="2">减{{ (type == 2 && score > 0) ? score : ''}}分</button>
 </view>
 
 <view class="fixed-control">
-  <button type="primary">保存</button>
+  <button type="primary" bindtap="save">保存</button>
 </view>
+
+<!--加减分弹窗-->
+<bottom-popup visible="{{ dialogVisible }}" position="center" bindupdate:visible="updateVisible">
+  <form bindsubmit="inputScore">
+      <view class="dialog">
+        <view class="title">分值:</view>
+        <input type="text" placeholder="请输入操作的分值" name="score"></input>
+        <view class="btns">
+          <button type="plain" bindtap="hideDialog">取消</button>
+          <button type="primary" form-type="submit">确定</button>
+        </view>
+      </view>
+  </form>
+</bottom-popup>

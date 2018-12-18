@@ -1,7 +1,13 @@
-<view class="cell">姓名：<text class="gray">哈哈哈</text></view>
-<view class="cell">手机号码：<text class="gray">13929267754</text></view>
-<view class="cell">卡的序列号：<text class="gray">88888</text></view>
 
-<view class="op">
-  <button type="primary">提交</button>
-</view>
+<form bindsubmit="submit">
+  <view class="cell">姓名：<input type="text" placeholder="请输入姓名" class="gray" name="name" value="{{name}}"></input></view>
+  <view class="cell">手机号码：<input type="text" placeholder="请输入手机号码"  class="gray" name="phone" value="{{phone}}"></input></view>
+  <view class="cell">卡的序列号：<input type="text" placeholder="请输入卡号"  class="gray" name="sn" value="{{sn}}"></input></view>
+  
+  <view class="op">
+    <button disabled="{{ disable }}" type="primary" form-type="submit">{{ state == 2 ? '重新制卡' :  '提交'}}{{countDown > 0 ? countDown : ''}}</button>
+  </view>
+</form>
+
+
+

@@ -5,20 +5,20 @@ import {encryptToken} from './encrpt-token'
 
 let privateKey  = null // {token,uid}对象
 
-function post(url, data) {
+function post(url, data, loading = true ) {
   // 先获取token
   let retryCount = 0
   let _post = function(reset){
     return getToken(reset).then(token => {
       return new Promise((resolve, reject) => {
         let d = Object.assign({}, data, token);
-        wx.showLoading({ title: '加载中', mask: true })
+        loading && wx.showLoading({ title: '加载中', mask: true })
         wx.request({
           url,
           data: d,
           method: "POST",
           success: function(res) {
-            wx.hideLoading()
+            loading && wx.hideLoading()
             if (res.statusCode != 200) {
               reject();
             }
@@ -37,7 +37,7 @@ function post(url, data) {
             }
           },
           fail: function(err) {
-            wx.hideLoading()
+            loading && wx.hideLoading()
             reject(err);
           }
         });
@@ -55,27 +55,27 @@ function post(url, data) {
 }
 
 
-function post2(url, data) {
+function post2(url, data, loading = true ) {
   // 先获取token
   let retryCount = 0
   let _post = function(reset){
     return getToken(reset).then(token => {
       return new Promise((resolve, reject) => {
         let d = Object.assign({}, data, token);
-        //wx.showLoading({ title: '加载中', mask: true })
+        loading && wx.showLoading({ title: '加载中', mask: true })
         wx.request({
           url,
           data: d,
           method: "POST",
           success: function(res) {
-            //wx.hideLoading()
+            loading && wx.hideLoading()
             if (res.statusCode != 200) {
               reject();
             }
             resolve(res.data)
           },
           fail: function(err) {
-            //wx.hideLoading()
+            loading && wx.hideLoading()
             reject(err);
           }
         });
@@ -310,7 +310,7 @@ function loginDevice(sn){
 /*是否登录 */
 function isLogin(){
   let url = `${config.host}/api/recycle/isLogin`
-  return post2(url)
+  return post2(url, {}, false)
 }
 
 /* 设备刷卡列表 */
@@ -331,6 +331,30 @@ function opScore({ user_uid, type, score }){
   return post(url, { user_uid, type, score}) 
 }
 
+/* 退出登录 */
+function outLogin(){
+  let url = `${config.host}/api/recycle/outLogin`
+  return post(url)
+}
+
+/*制卡 */
+function makeCard({ name, phone, sn }){
+  let url = `${config.host}/api/recycle/makeCard`
+  return post2(url, { name, phone, sn })
+}
+
+/*查询纸卡成功 */
+function isMake(){
+  let url = `${config.host}/api/recycle/isMake`
+  return post2(url, {}, false )
+}
+
+/* 重新纸卡 */
+function repeatMakeCard(){
+  let url = `${config.host}/api/recycle/repeatMakeCard`
+  return post2(url, {}, false )
+}
+
 export default {
   getTrashDataFromQurcode,
   uploadDeductImage,
@@ -346,5 +370,8 @@ export default {
   isLogin,
   cardList,
   cardDetail,
-  opScore
+  opScore,
+  makeCard,
+  isMake,
+  repeatMakeCard
 };

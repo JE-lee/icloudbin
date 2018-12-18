@@ -1,66 +1,120 @@
-// pages/device/card/card.js
+import api from '../../../utils/api'
+import config from '../../../utils/config'
+import util from '../../../utils/util'
+import retry from '../../../utils/retry-promise'
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    name: '',
+    phone: '',
+    sn: '',
+    countDown: 0,
+    state: 1, // 2 为发起制卡失败
+    disable: false
+  },
+  submit(e){
+    let { name, phone, sn } = e.detail.value,
+     result = ''
+    if(!name) result = '请输入姓名'
+    if(!util.isMobile(phone)) result = '请输入正确的手机号码'
+    if(!sn) result = '请输入卡号'
+    if(result){
+      util.qAlert(result, '验证')
+      return 
+    }
+    if(this.data.state == 2){
+      this.reMakeCard()
+    }else{
+      this.makeCard({ name, phone, sn })
+    }
+    
+  },
+  makeCard(data){
+    // 提交
+    api.makeCard(data).then(res => {
+      if(+res.code === 1 ){
+        this.roll()
+      }else if(+res.code === -1){
+        // 重新下发纸卡
+        this.reMakeCard()
+      }else{
+        util.qAlert(res.msg)
+      }
+    }).catch(() => {
+      util.qAlert('制卡失败，网络问题。')
+    })
+  },
+  reMakeCard(){
+    api.repeatMakeCard().then(res => {
+      if(+res.code === 1){
+        // 轮询
+        this.roll()
+      }else if(+res.code === -1 ){
+        // 重新下发失败
+        this.handleFail()
+      }else {
+        utils.qAlert(res.msg)
+      }
+    }).catch(() => {
+      util.qAlert('制卡失败，网络问题。')
+    })
+  },
+  roll(){
+    let timeout = 60
+    this.countDown(timeout)
+    // 开始倒计时
+    this.setData({ disable: true })
+    return retry(this.isMake, 5000, timeout / 5 ).then(res => {
+      this.setData({ disable: false })
+      if(+res === 2){
+        this.handleFail()
+      }else{
+        wx.showToast({ title: '制卡成功', icon: 'success'})
+        // 清空
+        this.reset()
+      }
+    }).catch(() => {
+      this.setData({ disable: false })
+      util.qAlert('制卡超时')
+    })
+  },
+  isMake(){
+    
+    return api.isMake().then(res => {
+      if(+res.code === 2){
+        //成功
+        return res
+      }else if(+res.code === -8){
+        // 需要重新下发
+       return 2
+      }else{
+        return Promise.reject()
+      }
+    })
+  },
+  handleFail(){
+    this.setData({state: 2})
+    util.qAlert('下发失败')
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  countDown(total){
+    this.setData({ countDown: total })
+    retry(() => Promise.reject(), 1000, total,() => {
+      if(this.data.state === 2){
+        this.setData({ countDown: 0 })
+        return false 
+      }else {
+        this.setData({ countDown: --this.data.countDown })
+        return true 
+      }
+      
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  reset(){
+    this.setData({
+      name: '',
+      phone: '',
+      sn: ''
+    })
   }
+
 })

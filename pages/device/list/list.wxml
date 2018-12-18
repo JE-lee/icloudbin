@@ -1,11 +1,12 @@
-<view class="list">
+<view class="list" wx:if="{{ list.length }}">
   <navigator class="item" wx:for="{{ list }}" url="/pages/device/detail/detail?user_uid={{item.user_uid}}&name={{item.name}}&phone={{item.phone}}">
     <text>{{ index + 1}}.{{ item.name }}</text>
     <text class="phone">({{ item.phone }})</text>
   </navigator>
 </view>
+<view class="empty" wx:else>暂无数据</view>
 
 <view class="fixed-control">
-  <button >退出登录</button>
-  <button type="primary">添加IC卡</button>
+  <button bindtap="exit">退出登录</button>
+  <button type="primary" bindtap="addICCard">添加IC卡</button>
 </view>

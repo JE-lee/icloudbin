@@ -1,0 +1,6 @@
+<view class="wrapper" wx:if="{{ _visible }}">
+  <view class="mask" bindtap="hide"></view>
+  <view class="content {{ position === 'bottom' ? 'bottom' : 'center'  }}">
+    <slot></slot>
+  </view>
+</view>

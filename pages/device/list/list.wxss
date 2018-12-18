@@ -31,3 +31,8 @@ page{
   font-size: 30rpx;
 }
 
+.empty{
+  text-align:center;
+  padding: 20rpx 0 ;
+}
+
