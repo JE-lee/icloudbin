@@ -14,12 +14,12 @@ Page({
     api.loginDevice(this.$$sn)
       .then(res => {
         if(+res.code === config.ERR_OK){
-          this.$route(`/pages/device/list/list`)
+          this.$route(`/pages/device/list/list`, 'redirect')
           return 
         }else if(+res.code === 0){
           // 轮询i's'Login
-          this.pollIsLogin(20).then(res => {
-            this.$route(`/pages/device/list/list`)
+          this.pollIsLogin(40).then(res => {
+            this.$route(`/pages/device/list/list`,'redirect')
           }).catch(err => {
             util.qAlert('登录设备失败')
           })
@@ -29,8 +29,11 @@ Page({
       })
   },
   pollIsLogin(count){
-    wx.showLoading({ title: '正在登录...', mask: true})
-    return retry(this.checkIsLogin, 2000, count).then(res => {
+    this.$$login = true 
+    return retry(this.checkIsLogin, 1000, count, (c,t) => {
+      this.$$login && wx.showLoading({ title: `正在登录${t-c}...`, mask: true})
+      return this.$$login 
+    }).then(res => {
       wx.hideLoading()
       return res
     }).catch((err) => {
@@ -43,5 +46,8 @@ Page({
       if(+res.code === 0) return Promise.reject()
       return res 
     })
+  },
+  onUnload(){
+    this.$$login = false
   }
 })

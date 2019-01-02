@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "设备详情",
   "usingComponents": {
     "bottom-popup": "/components/bottom-popup/bottom-popup"
   }

@@ -371,6 +371,7 @@ export default {
   cardList,
   cardDetail,
   opScore,
+  outLogin,
   makeCard,
   isMake,
   repeatMakeCard

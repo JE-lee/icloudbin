@@ -157,6 +157,10 @@ Page({
       })
     })
   },
+  // 跳转到设备列表页面
+  gotoDeviceList(){
+    this.$route(`/pages/device/list/list`)
+  },
   onReady(e) {
     this.map = wx.createMapContext("map");
     this.$ready = true

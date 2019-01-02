@@ -70,7 +70,7 @@
     <map id="map" class="map" longitude="{{currentPosition.longitude}}" latitude="{{currentPosition.latitude}}" markers="{{positionMarkes}}" polyline="{{polyline}}"
      bindmarkertap="mapMarkerTap">
       <!--已经登录设备-->
-      <cover-view class="login-status">
+      <cover-view class="login-status" wx:if="{{ loginStatus }}" bindtap="gotoDeviceList">
         <cover-view>{{ loginStatus ? '已登录' : '未登录'}}{{ loginStatus }}</cover-view>
       </cover-view>
       <cover-view class="btn-con">

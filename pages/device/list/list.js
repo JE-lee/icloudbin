@@ -3,11 +3,8 @@ import api from '../../../utils/api'
 import config from '../../../utils/config'
 import util from '../../../utils/util'
 Page({
-  onLoad(){
-    this.loadList()
-  },
   loadList(){
-    api.cardList().then(res => {
+    return api.cardList().then(res => {
       if(+res.code === config.ERR_OK){
         this.setData({ list: res.result })
       }
@@ -23,5 +20,13 @@ Page({
   },
   addICCard(){
     this.$route(`/pages/device/card/card`)
+  },
+  onPullDownRefresh(){
+    this.loadList()
+  },
+  onShow(){
+    this.loadList().then(() => {
+      wx.stopPullDownRefresh()
+    })
   }
 })
