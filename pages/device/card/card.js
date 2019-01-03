@@ -50,7 +50,7 @@ Page({
         this.roll()
       }else if(+res.code === -1 ){
         // 重新下发失败
-        this.handleFail()
+        this.handleFail(res.msg)
       }else {
         utils.qAlert(res.msg)
       }
@@ -65,8 +65,8 @@ Page({
     this.setData({ disable: true })
     return retry(this.isMake, 5000, timeout / 5 ).then(res => {
       this.setData({ disable: false })
-      if(+res === 2){
-        this.handleFail()
+      if(+res.code === -2){
+        this.handleFail(res.msg)
       }else{
         wx.showToast({ title: '制卡成功', icon: 'success'})
         // 清空
@@ -83,17 +83,17 @@ Page({
       if(+res.code === 2){
         //成功
         return res
-      }else if(+res.code === -8){
+      }else if(+res.code === -2){
         // 需要重新下发
-       return 2
+        return res
       }else{
         return Promise.reject()
       }
     })
   },
-  handleFail(){
+  handleFail(msg){
     this.setData({state: 2})
-    util.qAlert('下发失败')
+    util.qAlert(msg)
   },
 
   countDown(total){
@@ -113,7 +113,8 @@ Page({
     this.setData({
       name: '',
       phone: '',
-      sn: ''
+      sn: '',
+      state: 1
     })
   }
 
