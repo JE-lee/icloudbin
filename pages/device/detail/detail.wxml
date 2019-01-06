@@ -7,16 +7,18 @@
   <button bindtap="op" data-type="2">减{{ (type == 2 && score > 0) ? score : ''}}分</button>
 </view>
 
+<!--
 <view class="fixed-control">
   <button type="primary" bindtap="save">保存</button>
 </view>
+-->
 
 <!--加减分弹窗-->
 <bottom-popup visible="{{ dialogVisible }}" position="center" bindupdate:visible="updateVisible">
   <form bindsubmit="inputScore">
       <view class="dialog">
         <view class="title">分值:</view>
-        <input type="text" placeholder="请输入操作的分值" name="score"></input>
+        <input type="text" placeholder="请输入操作的分值" name="score" value="{{ score }}"></input>
         <view class="btns">
           <button type="plain" bindtap="hideDialog">取消</button>
           <button type="primary" form-type="submit">确定</button>

@@ -33,7 +33,7 @@ Page({
     api.makeCard(data).then(res => {
       if(+res.code === 1 ){
         this.roll()
-      }else if(+res.code === -1){
+      }else if(+res.code === -2){
         // 重新下发纸卡
         this.reMakeCard()
       }else{

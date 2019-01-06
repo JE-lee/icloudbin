@@ -1,4 +1,4 @@
-<image class="logo" src="/images/logo.png"></image>
+<image class="logo" src="/images/logo.jpg"></image>
 
 <view class="bottom">
   <button  type="primary" bindtap="sure">确认登录</button>

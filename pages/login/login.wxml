@@ -5,6 +5,7 @@
     <view class="invicode-label">请输入邀请码</view>
   </view>
   <input type="text" class="invicode-input" name="inviteCode"></input>
-  <button class="attem" bindtap="gotoAttem">授权丰林博雅</button>
+  <!--
+  <button class="attem" bindtap="gotoAttem">授权丰林博雅</button>-->
   <button class="loginfix" form-type="submit" >登录</button>
 </form>
