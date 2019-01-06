@@ -16,7 +16,7 @@ Page({
      result = ''
     if(!name) result = '请输入姓名'
     if(!util.isMobile(phone)) result = '请输入正确的手机号码'
-    if(!sn) result = '请输入卡号'
+    //if(!sn) result = '请输入卡号'
     if(result){
       util.qAlert(result, '验证')
       return 
@@ -33,7 +33,7 @@ Page({
     api.makeCard(data).then(res => {
       if(+res.code === 1 ){
         this.roll()
-      }else if(+res.code === -1){
+      }else if(+res.code === -2){
         // 重新下发纸卡
         this.reMakeCard()
       }else{

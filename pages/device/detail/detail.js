@@ -22,9 +22,12 @@ Page({
     this.setData({ dialogVisible: false })
   },
   inputScore(e){
+    let score = Math.abs(e.detail.value.score)
     this.setData({ 
-      score: Math.abs(e.detail.value.score),
+      score: score ? score : '',
       dialogVisible: false
+    }, () => {
+      this.save()
     })
   },
   updateVisible(e){
@@ -42,6 +45,7 @@ Page({
       util.qAlert('请输入要操作的分值')
       return 
     }
+    this.setData({ score: '' })
     api.opScore({
       user_uid: this.__query.user_uid,
       type,
@@ -49,7 +53,7 @@ Page({
     }).then(() => {
       this.setData({ 
         total: type == 1 ? total + score : total-score,
-        score: 0
+        score: ''
       })
       wx.showToast({ title: '操作成功', icon: 'success'})
     }).catch(err => {

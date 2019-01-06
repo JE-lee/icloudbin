@@ -22,11 +22,11 @@ Page({
     this.$route(`/pages/device/card/card`)
   },
   onPullDownRefresh(){
-    this.loadList()
-  },
-  onShow(){
     this.loadList().then(() => {
       wx.stopPullDownRefresh()
     })
+  },
+  onShow(){
+    this.loadList()
   }
 })
