@@ -8,7 +8,7 @@
 }
 
 .progress .front{
-  background-color:#58d7c7;
+  background-color:#0057a1;
   border-radius: 12rpx;
   position: absolute;
   left: 0;

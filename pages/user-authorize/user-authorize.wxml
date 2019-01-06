@@ -1,5 +1,5 @@
 <!--pages/user-authorize/user-authorize.wxml-->
 <view class="page">
-  <image class="logo" src="/pages/login/images/ytlogo.png"></image>
+  <image class="logo" src="/pages/login/images/ytlogo.jpg"></image>
   <button openType="getUserInfo" bindgetuserinfo="getAuthorize" type="primary" class="main-button">允许使用我的昵称,头像,性别</button>
 </view>

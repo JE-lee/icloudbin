@@ -15,7 +15,7 @@ Page({
     }else{
       wx.showModal({
         title: '授权',
-        content: '云筒需要您的昵称头像信息才能正常使用',
+        content: '丰林博雅需要您的昵称头像信息才能正常使用',
         showCancel: false
       })
     }

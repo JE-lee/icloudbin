@@ -132,7 +132,7 @@ Page({
     return new Promise((resolve,reject) => {
       wx.showModal({
         title: "获取用户位置",
-        content: "云筒需要获取你的位置才能正常使用",
+        content: "丰林博雅需要获取你的位置才能正常使用",
         success: ({ confirm, cancel }) => {
           if (confirm) {
             wx.openSetting({

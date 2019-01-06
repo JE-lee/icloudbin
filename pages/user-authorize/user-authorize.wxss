@@ -6,8 +6,8 @@
   padding: 200rpx 20rpx 0;
 }
 .logo{
-  width: 500rpx;
-  height: 153rpx;
+  width: 300rpx;
+  height: 259rpx;
   margin-bottom: 100rpx;
 }
 .main-button{

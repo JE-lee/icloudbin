@@ -153,18 +153,18 @@ function upload(url, path, name, formData) {
   
 }
 function getTrashDataFromQurcode(code) {
-  let url = `${config.host}/api/recycle/recycleTrash`,
+  let url = `${config.host}/api/Fenglin/recycleTrash`,
     data = { recycle_uid: code };
   return post(url, data);
 }
 
 function uploadDeductImage(path) {
-  let url = `${config.host}/api/recycle/upload`;
+  let url = `${config.host}/api/Fenglin/upload`;
   return upload(url, path, "image", { token: "" });
 }
 
 function postTrashInfo(data) {
-  let url = `${config.host}/api/recycle/recycleInfo`;
+  let url = `${config.host}/api/Fenglin/recycleInfo`;
   return post(url, data);
 }
 
@@ -180,7 +180,7 @@ function getToken(reset =  false) {
   } else {
     let p =  new Promise((resolve, reject) => {
       Promise.all([user.wxlogin(), user.getUserInfo()]).then(res => {
-        let url = `${config.host}/api/recycle/getToken`,
+        let url = `${config.host}/api/Fenglin/getToken`,
           data = {
             code: res[0],
             nickname: res[1].nickName,
@@ -225,7 +225,7 @@ function getToken(reset =  false) {
 
 /*邀请登录 */
 function inviteLogin(inviteCode) {
-  let url = `${config.host}/api/recycle/invite`;
+  let url = `${config.host}/api/Fenglin/invite`;
   return new Promise((resolve, reject) => {
     //重新获取code
     user.wxlogin()
@@ -260,7 +260,7 @@ function inviteLogin(inviteCode) {
 function vefiryToken(data){
   return new Promise((resolve, reject) => {
     wx.request({
-      url: 'https://www.icb-admin.com/api/recycle/common',
+      url: 'https://www.icb-admin.com/api/Fenglin/common',
       data,
       method: 'POST',
       success: (res) => {
@@ -276,7 +276,7 @@ function vefiryToken(data){
 
 /*首页数据接口 */
 function getIndexInfo(){
-  let url = `${config.host}/api/recycle/index`
+  let url = `${config.host}/api/Fenglin/index`
   return post(url)
 }
 
@@ -286,72 +286,72 @@ function getIndexInfo(){
  * @param {string} sn | 垃圾桶编号 
  */
 function getTrashDetail(sn){
-  let url = `${config.host}/api/recycle/detail`
+  let url = `${config.host}/api/Fenglin/detail`
   return post(url, {sn})
 }
 
 /*垃圾桶历史消息 */
 function getTrashHistoryMsg(sn){
-  let url = `${config.host}/api/recycle/message`
+  let url = `${config.host}/api/Fenglin/message`
   return post(url,{ sn })
 }
 /**垃圾桶投放记录 */
 function getTrashRecord({sn, sort}){
-  let url = `${config.host}/api/recycle/unusual`
+  let url = `${config.host}/api/Fenglin/unusual`
   return post(url, {sn, sort})
 }
 
 /* 登录设备 */
 function loginDevice(sn){
-  let url = `${config.host}/api/recycle/loginDevice`
+  let url = `${config.host}/api/Fenglin/loginDevice`
   return post2(url, { sn })
 }
 
 /*是否登录 */
 function isLogin(){
-  let url = `${config.host}/api/recycle/isLogin`
+  let url = `${config.host}/api/Fenglin/isLogin`
   return post2(url, {}, false)
 }
 
 /* 设备刷卡列表 */
 function cardList(){
-  let url = `${config.host}/api/recycle/cardList`
+  let url = `${config.host}/api/Fenglin/cardList`
   return post(url) 
 }
 
 /* 刷卡用户详情数据 */
 function cardDetail(user_uid){
-  let url = `${config.host}/api/recycle/cardListDetail`
+  let url = `${config.host}/api/Fenglin/cardListDetail`
   return post(url, { user_uid }) 
 }
 
 /* 加减分 */
 function opScore({ user_uid, type, score }){
-  let url = `${config.host}/api/recycle/score`
+  let url = `${config.host}/api/Fenglin/score`
   return post(url, { user_uid, type, score}) 
 }
 
 /* 退出登录 */
 function outLogin(){
-  let url = `${config.host}/api/recycle/outLogin`
+  let url = `${config.host}/api/Fenglin/outLogin`
   return post(url)
 }
 
 /*制卡 */
 function makeCard({ name, phone, sn }){
-  let url = `${config.host}/api/recycle/makeCard`
+  let url = `${config.host}/api/Fenglin/makeCard`
   return post2(url, { name, phone, sn })
 }
 
 /*查询纸卡成功 */
 function isMake(){
-  let url = `${config.host}/api/recycle/isMake`
+  let url = `${config.host}/api/Fenglin/isMake`
   return post2(url, {}, false )
 }
 
 /* 重新纸卡 */
 function repeatMakeCard(){
-  let url = `${config.host}/api/recycle/repeatMakeCard`
+  let url = `${config.host}/api/Fenglin/repeatMakeCard`
   return post2(url, {}, false )
 }
 

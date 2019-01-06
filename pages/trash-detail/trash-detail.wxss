@@ -97,7 +97,7 @@
   content: '';
   width: 10rpx;
   height: 10rpx;
-  background-color: #58d7c7;
+  background-color: #0057a1;
   position: absolute;
   left: 0;
   top: 20rpx;
