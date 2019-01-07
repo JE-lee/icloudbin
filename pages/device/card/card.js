@@ -9,7 +9,8 @@ Page({
     sn: '',
     countDown: 0,
     state: 1, // 2 为发起制卡失败
-    disable: false
+    disable: false,
+    stopCountDown: true
   },
   submit(e){
     let { name, phone, sn } = e.detail.value,
@@ -60,9 +61,10 @@ Page({
   },
   roll(){
     let timeout = 60
-    this.countDown(timeout)
+    this.setData({ disable: true, stopCountDown: false }, () => this.countDown(timeout))
+    
     // 开始倒计时
-    this.setData({ disable: true })
+    
     return retry(this.isMake, 5000, timeout / 5 ).then(res => {
       this.setData({ disable: false })
       if(+res.code === -2){
@@ -92,14 +94,17 @@ Page({
     })
   },
   handleFail(msg){
-    this.setData({state: 2})
+    this.setData({
+      state: 2,
+      stopCountDown: true 
+    })
     util.qAlert(msg)
   },
 
   countDown(total){
     this.setData({ countDown: total })
     retry(() => Promise.reject(), 1000, total,() => {
-      if(this.data.state === 2){
+      if(this.data.stopCountDown){
         this.setData({ countDown: 0 })
         return false 
       }else {
@@ -114,7 +119,8 @@ Page({
       name: '',
       phone: '',
       sn: '',
-      state: 1
+      state: 1,
+      stopCountDown: true
     })
   }
 
